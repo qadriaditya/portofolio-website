@@ -74,8 +74,8 @@ const AboutSection = () => {
     setTab(id);
   };
   return (
-    <section id="about" className="text-white mt-16">
-      <div className="md:grid md:grid-cols-2 gap-8 item-center py-8 px-4 xl:gap-16 sm:py-16 xl:px-16 ">
+    <section id="about" className="text-white mt-22">
+      <div className="md:grid md:grid-cols-2 gap-8 item-center py-8 px- xl:gap-16 sm:py-16 xl:px-16 ">
         <Image
           src="/images/about-image.png"
           width={500}
