@@ -1,38 +1,49 @@
 "use client";
 import React from "react";
-import Image from "next/image";
 import { TypeAnimation } from "react-type-animation";
+import useReveal from "../hooks/useReveal";
+import { ArrowDownCircleIcon } from "@heroicons/react/24/outline";
 
 const HeroSection = () => {
+  const { ref: leftRef, revealed: leftRevealed } = useReveal({
+    threshold: 0.08,
+  });
+
   return (
     <section
       id="home"
-      className="flex flex-col items-center justify-center min-h-[100vh]"
+      className="relative flex items-center justify-center min-h-[80vh] scroll-mt-16 overflow-visible px-6 pt-4 pb-12"
     >
-      <div className="grid grid-cols-1 sm:grid-cols-12 w-full">
-        <div className="col-span-5 flex justify-center items-center mb-10 lg:mt-0 order-first sm:order-none">
-          <div className="rounded-full bg-[#181818] w-[250px] h-[250px] lg:w-[400px] lg:h-[400px] relative flex items-center justify-center">
-            <Image
-              src="/images/hero-image.png"
-              alt="Hero Image"
-              className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-              width={500}
-              height={500}
-              priority
-            />
-          </div>
-        </div>
+      <div className="absolute top-12 left-6 w-12 h-12 bg-[var(--primary-200)] rounded-full blur-3xl opacity-20 animate-pulse pointer-events-none" />
 
-        <div className="col-span-7 flex flex-col justify-center items-center sm:items-start text-center sm:text-left px-4 ml-10">
-          <h1 className="text-white  text-4xl sm:text-5xl lg:text-6xl font-extrabold">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-blue-300 ">
+      <div className="w-full max-w-4xl mx-auto z-10">
+        <div
+          ref={leftRef}
+          className={`flex flex-col items-center text-center px-4 transition-all duration-700 ${
+            leftRevealed ? "anim-slide-up" : "opacity-0 translate-y-6"
+          }`}
+        >
+          <p
+            className={`text-white text-sm sm:text-base mb-3 tracking-wide uppercase ${
+              leftRevealed ? "anim-fade-in anim-delay-150" : "opacity-0"
+            }`}
+          >
+            🚀 Let’s build something amazing together
+          </p>
+
+          <h1 className="text-white text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary-700)] to-[var(--primary-500)]">
               Hello, I'm
             </span>
             <br />
-            <span className="mb-4 inline-block">
+            <span
+              className={`mb-2 mt-3 inline-block ${
+                leftRevealed ? "anim-fade-in anim-delay-200" : "opacity-0"
+              }`}
+            >
               <TypeAnimation
                 sequence={[
-                  "Aditya",
+                  "Qadri Aditya H. R.",
                   1000,
                   "Web Developer",
                   1000,
@@ -45,19 +56,97 @@ const HeroSection = () => {
               />
             </span>
           </h1>
-          <p className="text-[#ADB7BE] text-base sm:text-lg mb-6 mt-7 lg:text-xl max-w-xl">
+
+          <p
+            className={`text-white/80 text-base sm:text-lg mb-6 mt-4 lg:text-xl max-w-2xl ${
+              leftRevealed ? "anim-fade-in anim-delay-300" : "opacity-0"
+            }`}
+          >
             Passionate learner with a love for technology, problem-solving, and
             continuous growth.
           </p>
-          <div className="w-full sm:w-auto flex justify-center sm:justify-start">
-            <button className="px-1 py-1 rounded-full bg-gradient-to-br from-blue-700 via-blue-900 to-blue-500 hover:bg-slate-800 text-white mt-3">
-              <span className="block bg-[#121212] hover:bg-slate-800 rounded-full px-7 py-1.5">
-                Download CV
-              </span>
+
+          <div
+            className={`flex flex-col sm:flex-row gap-4 justify-center ${
+              leftRevealed ? "anim-fade-in anim-delay-400" : "opacity-0"
+            }`}
+          >
+            <button className="px-6 py-3 rounded-full bg-primary text-white font-semibold shadow-md hover:scale-105 hover:bg-[var(--primary-700)] transition-all">
+              Download CV
             </button>
+            <a
+              href="#projects"
+              className="px-6 py-3 rounded-full border border-white/30 text-white font-semibold hover:bg-white/5 transition-all flex items-center gap-2"
+            >
+              <ArrowDownCircleIcon className="h-5 w-5 text-white" />
+              See My Work
+            </a>
           </div>
         </div>
       </div>
+      {/* === Police Lines (Crossing) === */}
+      <div className="absolute bottom-0 left-0 w-full h-[100px] pointer-events-none overflow-visible z-0 pb-10">
+        {/* Line 1: yellow background with black text */}
+        <div className="absolute -rotate-[15deg] left-[-10%] bottom-10 bg-white text-black font-extrabold text-sm py-2 w-[130%] shadow-[0_4px_15px_rgba(0,0,0,0.3)] border-y-4 border-black">
+          <div className="animate-marquee flex tracking-widest">
+            <div className="marquee-track whitespace-nowrap">
+              DESIGN • BACKEND LOGIC • SYSTEM BUILDING • CODING IN PROGRESS •
+              FRONTEND DESIGN •
+            </div>
+            <div className="marquee-track whitespace-nowrap">
+              DESIGN • BACKEND LOGIC • SYSTEM BUILDING • CODING IN PROGRESS •
+              FRONTEND DESIGN •
+            </div>
+          </div>
+        </div>
+
+        {/* Line 2: black background with yellow text */}
+        <div className="absolute rotate-[10deg] left-[-10%] bottom-0 bg-black text-white font-extrabold text-sm py-2 w-[130%] shadow-[0_4px_15px_rgba(0,0,0,0.3)] border-y-4 border-white">
+          <div className="animate-marquee2 flex tracking-widest">
+            <div className="marquee-track whitespace-nowrap">
+              CREATIVE DEVELOPER • UI/UX DESIGNER • PROBLEM SOLVER • LET’S BUILD
+              SOMETHING AMAZING •
+            </div>
+            <div className="marquee-track whitespace-nowrap">
+              CREATIVE DEVELOPER • UI/UX DESIGNER • PROBLEM SOLVER • LET’S BUILD
+              SOMETHING AMAZING •
+            </div>
+          </div>
+        </div>
+      </div>
+      <style jsx>{`
+        @keyframes marquee {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+        @keyframes marquee2 {
+          0% {
+            transform: translateX(-50%);
+          }
+          100% {
+            transform: translateX(0);
+          }
+        }
+        .animate-marquee,
+        .animate-marquee2 {
+          display: flex;
+          gap: 2rem;
+          width: max-content;
+        }
+        .animate-marquee {
+          animation: marquee 20s linear infinite;
+        }
+        .animate-marquee2 {
+          animation: marquee2 22s linear infinite;
+        }
+        .marquee-track {
+          display: inline-block;
+        }
+      `}</style>
     </section>
   );
 };

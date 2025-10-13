@@ -26,10 +26,13 @@ const navLinks = [
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <nav className="fixed top-0 left-0 right-0 z-10 bg-[#121212] bg-opacity-90">
-      <div className="flex flex-wrap items-center mx-auto pt-4 px-6 py-2">
-        <Link href={"/"} className="text-2xl md:text-5xl text-white mr-auto">
-          ---
+    <nav className="sticky top-0 left-0 right-0 z-40 bg-black shadow-sm">
+      <div className="flex items-center mx-auto px-6 py-3">
+        <Link
+          href={"/"}
+          className="text-xl md:text-4xl text-white font-bold mr-auto"
+        >
+          A
         </Link>
         {/* Desktop Menu */}
         <div className="Menu hidden md:block md:w-auto" id="navbar">
@@ -42,7 +45,7 @@ const Navbar = () => {
         <div className="mobile-menu block md:hidden ml-auto">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="flex items-center px-3 py-2 border rounded border-slate-200 text-slate-200 hover:text-white hover:border-white"
+            className="flex items-center px-3 py-2 border rounded border-slate-200 text-primary hover:text-primary-700 hover:border-slate-300"
           >
             {isOpen ? (
               <XMarkIcon className="h-5 w-5" />
@@ -53,7 +56,7 @@ const Navbar = () => {
         </div>
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden w-full bg-[#121212] absolute left-0 top-full z-20">
+          <div className="md:hidden w-full bg-white absolute left-0 top-full z-20 shadow-md">
             <ul className="flex flex-col items-center justify-center p-4 space-y-4">
               {navLinks.map((link, index) => (
                 <NavLink key={index} href={link.path} title={link.title} />

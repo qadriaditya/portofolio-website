@@ -6,14 +6,15 @@ html {
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary-50: #eef2ff;
+  --primary-100: #e0e7ff;
+  --primary-500: #6366f1; /* indigo-500 */
+  --primary-700: #4338ca; /* indigo-700 */
+  --accent-400: #14b8a6; /* teal-400 */
+  --muted-700: #475569; /* slate-600-ish */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* CSS variables for theme are defined above in :root */
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -26,4 +27,163 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  /* Prevent horizontal overflow caused by decorative absolute elements */
+  overflow-x: hidden;
+}
+
+/* Inverted theme: swap background/foreground */
+.inverted {
+  --background: #0a0a0a;
+  --foreground: #ffffff;
+}
+
+/* Utility helpers to reference palette in non-tailwind places */
+.text-primary {
+  color: var(--primary-700) !important;
+}
+.bg-primary {
+  background-color: var(--primary-500) !important;
+}
+.bg-accent {
+  background-color: var(--accent-400) !important;
+}
+.text-muted {
+  color: var(--muted-700) !important;
+}
+
+/* Animation utilities */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatY {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.anim-fade-in {
+  animation: fadeIn 700ms ease-out both;
+}
+.anim-slide-up {
+  animation: slideUp 700ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.anim-float {
+  animation: floatY 4s ease-in-out infinite;
+}
+
+.anim-delay-100 {
+  animation-delay: 100ms;
+}
+.anim-delay-200 {
+  animation-delay: 200ms;
+}
+.anim-delay-300 {
+  animation-delay: 300ms;
+}
+.anim-delay-400 {
+  animation-delay: 400ms;
+}
+.anim-delay-500 {
+  animation-delay: 500ms;
+}
+
+.anim-fast {
+  animation-duration: 400ms;
+}
+.anim-medium {
+  animation-duration: 700ms;
+}
+.anim-slow {
+  animation-duration: 1100ms;
+}
+
+/* Reduce motion preference support */
+@media (prefers-reduced-motion: reduce) {
+  .anim-fade-in,
+  .anim-slide-up,
+  .anim-float {
+    animation: none !important;
+  }
+}
+
+/* ====== Animated Gradient Background ====== */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.bg-animated {
+  /* kept for optional use on specific sections */
+  background: linear-gradient(-45deg, #0a0a0a, #171717, #222222, #101010);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+.bg-noise::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mO8Ww8AAnsB7L6chLUAAAAASUVORK5CYII=");
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+/* Page transition styles */
+.page-transition {
+  transition: opacity 240ms ease, transform 260ms ease;
+}
+.page-transition.enter {
+  opacity: 1;
+  transform: translateY(0);
+}
+.page-transition.exit {
+  opacity: 0;
+  transform: translateY(8px) scale(0.995);
+}
+
+/* Slight glass overlay for subtle depth */
+.bg-animated::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.02),
+    rgba(0, 0, 0, 0.02)
+  );
+  pointer-events: none;
 }
