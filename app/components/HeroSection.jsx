@@ -4,7 +4,7 @@ import { TypeAnimation } from "react-type-animation";
 import useReveal from "../hooks/useReveal";
 import { ArrowDownCircleIcon } from "@heroicons/react/24/outline";
 
-const HeroSection = () => {
+const HeroSection = ({ onScrollDown, isAboutOpen }) => {
   const { ref: leftRef, revealed: leftRevealed } = useReveal({
     threshold: 0.08,
   });
@@ -85,9 +85,9 @@ const HeroSection = () => {
         </div>
       </div>
       {/* === Police Lines (Crossing) === */}
-      <div className="absolute bottom-0 left-0 w-full h-[100px] pointer-events-none overflow-visible z-0 pb-10">
-        {/* Line 1: yellow background with black text */}
-        <div className="absolute -rotate-[15deg] left-[-10%] bottom-10 bg-white text-black font-extrabold text-sm py-2 w-[130%] shadow-[0_4px_15px_rgba(0,0,0,0.3)] border-y-4 border-black">
+      {/* <div className="absolute bottom-0 left-0 w-full h-[100px] pointer-events-none overflow-visible z-0 pb-10"> */}
+      {/* Line 1: yellow background with black text */}
+      {/* <div className="absolute -rotate-[15deg] left-[-10%] bottom-10 bg-white text-black font-extrabold text-sm py-2 w-[130%] shadow-[0_4px_15px_rgba(0,0,0,0.3)] border-y-4 border-black">
           <div className="animate-marquee flex tracking-widest">
             <div className="marquee-track whitespace-nowrap">
               DESIGN • BACKEND LOGIC • SYSTEM BUILDING • CODING IN PROGRESS •
@@ -98,10 +98,10 @@ const HeroSection = () => {
               FRONTEND DESIGN •
             </div>
           </div>
-        </div>
+        </div> */}
 
-        {/* Line 2: black background with yellow text */}
-        <div className="absolute rotate-[10deg] left-[-10%] bottom-0 bg-black text-white font-extrabold text-sm py-2 w-[130%] shadow-[0_4px_15px_rgba(0,0,0,0.3)] border-y-4 border-white">
+      {/* Line 2: black background with yellow text */}
+      {/* <div className="absolute rotate-[10deg] left-[-10%] bottom-0 bg-black text-white font-extrabold text-sm py-2 w-[130%] shadow-[0_4px_15px_rgba(0,0,0,0.3)] border-y-4 border-white">
           <div className="animate-marquee2 flex tracking-widest">
             <div className="marquee-track whitespace-nowrap">
               CREATIVE DEVELOPER • UI/UX DESIGNER • PROBLEM SOLVER • LET’S BUILD
@@ -113,7 +113,7 @@ const HeroSection = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       <style jsx>{`
         @keyframes marquee {
           0% {
@@ -147,6 +147,50 @@ const HeroSection = () => {
           display: inline-block;
         }
       `}</style>
+      {/* Scroll down button */}
+      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20 flex flex-col items-center">
+        <button
+          onClick={() => {
+            if (typeof onScrollDown === "function") onScrollDown();
+            else {
+              const el = document.getElementById("about");
+              if (el) el.scrollIntoView({ behavior: "smooth" });
+            }
+          }}
+          aria-expanded={!!isAboutOpen}
+          aria-controls="about"
+          className={`relative px-5 py-3 rounded-full text-white font-semibold shadow-lg hover:brightness-95 hover:scale-105 transition-transform flex items-center gap-2 bg-[var(--primary-500)]`}
+        >
+          <span className="select-none">{isAboutOpen ? "Close" : "About"}</span>
+          <svg
+            className={`w-4 h-4 transform transition-transform ${
+              isAboutOpen ? "rotate-180" : ""
+            }`}
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <path
+              d="M5 8l5 5 5-5"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
+
+        {/* Decorative centered white line BELOW the About button — animate when About opens */}
+        <div
+          aria-hidden="true"
+          className={`w-20 h-[2px] bg-white mt-3 rounded-full transition-all duration-500 ease-out transform ${
+            isAboutOpen
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-2 pointer-events-none"
+          }`}
+        />
+      </div>
     </section>
   );
 };

@@ -6,10 +6,10 @@ html {
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --primary-50: #eef2ff;
-  --primary-100: #e0e7ff;
-  --primary-500: #6366f1; /* indigo-500 */
-  --primary-700: #4338ca; /* indigo-700 */
+  --primary-50: #e0f7f8;
+  --primary-100: #b3ecef;
+  --primary-500: #00adb5; /* cyan-500 */
+  --primary-700: #008c92; /* cyan-700 */
   --accent-400: #14b8a6; /* teal-400 */
   --muted-700: #475569; /* slate-600-ish */
 }

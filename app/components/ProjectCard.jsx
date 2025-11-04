@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import useReveal from "../hooks/useReveal";
 
 const ProjectCard = ({ project }) => {
@@ -8,34 +9,71 @@ const ProjectCard = ({ project }) => {
   return (
     <article
       ref={ref}
-      className={`bg-transparent rounded-lg overflow-hidden transform transition-transform duration-300 hover:scale-[1.02] ${
-        revealed ? "anim-fade-in" : "opacity-0 translate-y-6"
-      }`}
+      className={`group relative rounded-xl overflow-hidden transform transition-all duration-500 hover:scale-[1.02] ${
+        project?.gradient ? `bg-gradient-to-br ${project.gradient}` : "bg-white"
+      } ${revealed ? "anim-fade-in" : "opacity-0 translate-y-6"}`}
     >
-      {/* Square thumbnail */}
-      <div className="flex justify-center">
-        <div className="bg-black rounded-2xl w-full max-w-[360px] aspect-square flex items-center justify-center shadow-[0_8px_30px_rgba(0,0,0,0.15)]">
-          {/* center icon: if project.icon === 'square' show square, else circle */}
-          <div
-            className={`bg-white ${
-              project?.icon === "square"
-                ? "w-12 h-12 rounded-sm"
-                : "w-12 h-12 rounded-full"
-            }`}
+      {/* Image */}
+      {project?.image && (
+        <div className="relative w-full h-48 sm:h-56 overflow-hidden">
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            className="object-cover"
           />
         </div>
+      )}
+
+      {/* Content */}
+      <div className="p-6">
+        <h3 className="text-black text-xl sm:text-2xl font-bold mb-3">
+          {project?.title || "Project Title"}
+        </h3>
+        <p className="text-black/90 text-sm sm:text-base leading-relaxed mb-4">
+          {project?.description || "Project description goes here."}
+        </p>
+
+        {/* Tags */}
+        {project?.tags && project.tags.length > 0 && (
+          <div className="flex flex-wrap gap-2 mb-4">
+            {project.tags.map((tag, idx) => (
+              <span
+                key={idx}
+                className="px-3 py-1 rounded-full border border-black/30 text-black/90 text-xs backdrop-blur-sm"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
+
+        {/* Link */}
+        {project?.link && (
+          <a
+            href={project.link}
+            className="inline-flex items-center gap-2 text-black text-sm font-medium hover:gap-3 transition-all"
+          >
+            View Project
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </a>
+        )}
       </div>
 
-      <div className="mt-4 px-1">
-        <h3 className="text-base sm:text-lg font-semibold text-white mb-2">
-          {project?.title || "Feature title."}
-        </h3>
-        <p className="text-sm text-muted text-white max-w-[28rem]">
-          s
-          {project?.description ||
-            "This is a feature description spanning a couple of lines."}
-        </p>
-      </div>
+      {/* Decorative blur */}
+      <div className="absolute top-1/2 right-1/4 w-64 h-64 bg-white/10 rounded-full blur-3xl -z-0" />
     </article>
   );
 };

@@ -25,41 +25,75 @@ const navLinks = [
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const leftLinks = navLinks.slice(0, 2); // Home, About
+  const rightLinks = navLinks.slice(2); // Projects, Contact
+
   return (
-    <nav className="sticky top-0 left-0 right-0 z-40 bg-black shadow-sm">
-      <div className="flex items-center mx-auto px-6 py-3">
-        <Link
-          href={"/"}
-          className="text-xl md:text-4xl text-white font-bold mr-auto"
-        >
-          A
-        </Link>
-        {/* Desktop Menu */}
-        <div className="Menu hidden md:block md:w-auto" id="navbar">
-          <ul className="flex p-4 md:p-0 sm:flex-row md:space-x-8 mr-10">
-            {navLinks.map((link, index) => (
-              <NavLink key={index} href={link.path} title={link.title} />
+    <nav className="sticky top-4 left-0 right-0 z-40 px-4">
+      <div className="max-w-xl mx-auto bg-white backdrop-blur-sm rounded-full shadow-xl">
+        <div className="flex items-center justify-between px-8 py-3">
+          {/* Left Menu */}
+          <div className="hidden md:flex items-center space-x-13">
+            {leftLinks.map((link, index) => (
+              <Link
+                key={index}
+                href={link.path}
+                className="text-black hover:text-green-800 transition-colors text-base font-semibold"
+              >
+                {link.title}
+              </Link>
             ))}
-          </ul>
-        </div>
-        <div className="mobile-menu block md:hidden ml-auto">
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="flex items-center px-3 py-2 border rounded border-slate-200 text-primary hover:text-primary-700 hover:border-slate-300"
+          </div>
+
+          {/* Center Logo */}
+          <Link
+            href={"/"}
+            className="flex items-center justify-center w-11 h-7 bg-black rounded-es-xl text-white font-bold text-lg"
           >
-            {isOpen ? (
-              <XMarkIcon className="h-5 w-5" />
-            ) : (
-              <Bars3Icon className="h-5 w-5" />
-            )}
-          </button>
+            <span className="text-white">A</span>
+          </Link>
+
+          {/* Right Menu */}
+          <div className="hidden md:flex items-center space-x-13">
+            {rightLinks.map((link, index) => (
+              <Link
+                key={index}
+                href={link.path}
+                className="text-black hover:text-green-800 transition-colors text-base font-semibold"
+              >
+                {link.title}
+              </Link>
+            ))}
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="flex items-center px-3 py-2 text-white"
+            >
+              {isOpen ? (
+                <XMarkIcon className="h-6 w-6" />
+              ) : (
+                <Bars3Icon className="h-6 w-6" />
+              )}
+            </button>
+          </div>
         </div>
+
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden w-full bg-white absolute left-0 top-full z-20 shadow-md">
-            <ul className="flex flex-col items-center justify-center p-4 space-y-4">
+          <div className="md:hidden border-t border-white/10">
+            <ul className="flex flex-col items-center p-4 space-y-3">
               {navLinks.map((link, index) => (
-                <NavLink key={index} href={link.path} title={link.title} />
+                <Link
+                  key={index}
+                  href={link.path}
+                  className="text-black hover:text-green-800 border-b-green-800 transition-colors text-sm font-medium"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {link.title}
+                </Link>
               ))}
             </ul>
           </div>
