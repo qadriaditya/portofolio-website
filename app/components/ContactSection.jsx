@@ -4,7 +4,7 @@ import React from "react";
 const ContactSection = () => {
   return (
     <section id="contact" className="py-16">
-      <div className="max-w-4xl mx-auto px-6 text-center">
+      <div className="max-w-4xl mx-auto px-6 text-center mt-50">
         <h2 className="text-3xl font-bold text-white mb-4 anim-slide-up">
           Get in touch
         </h2>
@@ -20,7 +20,7 @@ const ContactSection = () => {
             Email Me
           </a>
           <a
-            href="https://www.linkedin.com/"
+            href="https://www.linkedin.com/in/qadri-aditya-hadi-ramadhan-177763355/"
             target="_blank"
             rel="noreferrer"
             className="px-6 py-3 border border-gray-700 text-white rounded"

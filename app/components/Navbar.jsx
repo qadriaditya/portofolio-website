@@ -38,7 +38,7 @@ const Navbar = () => {
               <Link
                 key={index}
                 href={link.path}
-                className="text-black hover:text-green-800 transition-colors text-base font-semibold"
+                className="text-black/70 hover:text-green-800 transition-colors text-base"
               >
                 {link.title}
               </Link>
@@ -59,7 +59,7 @@ const Navbar = () => {
               <Link
                 key={index}
                 href={link.path}
-                className="text-black hover:text-green-800 transition-colors text-base font-semibold"
+                className="text-black/70 hover:text-green-800 transition-colors text-base"
               >
                 {link.title}
               </Link>

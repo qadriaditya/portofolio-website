@@ -9,7 +9,7 @@ const Footer = () => {
         </div>
         <div className="flex items-center gap-4">
           <a
-            href="https://github.com/"
+            href="https://github.com/qadriaditya"
             target="_blank"
             rel="noreferrer"
             className="text-muted hover:text-primary"
@@ -17,7 +17,7 @@ const Footer = () => {
             GitHub
           </a>
           <a
-            href="https://www.linkedin.com/"
+            href="https://www.linkedin.com/in/qadri-aditya-hadi-ramadhan-177763355/"
             target="_blank"
             rel="noreferrer"
             className="text-muted hover:text-primary"

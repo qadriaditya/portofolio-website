@@ -51,7 +51,7 @@ const ProjectSection = () => {
 
   return (
     <section id="projects" className="py-16 bg-black" ref={sectionRef}>
-      <div className="max-w-7xl mx-auto px-6 mt-20">
+      <div className="max-w-7xl mx-auto px-6">
         {/* Police line placed above the section title; fades/slides based on scroll */}
         <div
           className={`transition-all duration-500 ease-out overflow-visible ${
@@ -67,7 +67,7 @@ const ProjectSection = () => {
             visible ? "opacity-100" : "opacity-0"
           }`}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 mt-30">
             My Projects
           </h2>
           <p className="text-white/70 text-lg">

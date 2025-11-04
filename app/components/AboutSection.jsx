@@ -138,7 +138,7 @@ const AboutSection = ({ onClose }) => {
       <div className="relative">
         {/* full-bleed background: expand to viewport using left 50% + negative margin */}
         <div
-          className="absolute top-0 z-0 bg-white"
+          className="absolute top-0 z-0 bg-black"
           style={{
             left: "50%",
             marginLeft: "-50vw",
@@ -146,17 +146,17 @@ const AboutSection = ({ onClose }) => {
             height: "100%",
           }}
         />
-        <div className="relative z-10 text-[#1c1c1c] min-h-screen flex flex-col justify-center overflow-hidden">
+        <div className="relative z-10 text-white min-h-screen flex flex-col justify-center overflow-hidden">
           <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 px-8 py-3 items-center">
             {/* LEFT TEXT */}
             <div>
-              <h1 className="text-[56px] leading-tight font-extrabold text-[#1b1b1b]">
+              <h1 className="text-[56px] leading-tight font-extrabold text-white">
                 Hello,{" "}
                 <span className="block">
-                  I’m <span className="text-[#eaaa00]">Adit</span>
+                  I’m <span className="text-gray-300">Adit</span>
                 </span>
               </h1>
-              <p className="mt-6 text-[16px] text-[#333] leading-relaxed max-w-lg">
+              <p className="mt-6 text-[16px] text-gray-300 leading-relaxed max-w-lg">
                 I am a self-taught Graphic Designer based in Viet Nam with
                 extensive marketing and communication experience. I am currently
                 living in France and pursuing a degree in Digital Web & Project
@@ -169,7 +169,7 @@ const AboutSection = ({ onClose }) => {
               <div className="relative w-[320px] sm:w-[380px] md:w-[440px] lg:w-[480px] max-w-full">
                 {/* subtle decorative block shifted to the right for depth */}
                 <div
-                  className="absolute top-8 right-0 bg-[#304b36] rounded-lg -z-10"
+                  className="absolute top-8 right-0 bg-gray-800 rounded-lg -z-10"
                   style={{
                     width: "105%",
                     height: "440px",
@@ -188,8 +188,8 @@ const AboutSection = ({ onClose }) => {
 
                 {/* name/title caption */}
                 <div className="mt-4 text-center lg:text-right">
-                  <h4 className="text-lg font-bold text-[#111]"></h4>
-                  <p className="text-sm text-gray-600">
+                  <h4 className="text-lg font-bold text-white"></h4>
+                  <p className="text-sm text-gray-300">
                     Graphic Designer & Web Enthusiast
                   </p>
                 </div>
@@ -257,21 +257,21 @@ const AboutSection = ({ onClose }) => {
               marginLeft: "-50vw",
               width: "100vw",
               height: "100%",
-              backgroundColor: "#2e3f31",
+              backgroundColor: "#000",
             }}
           />
           <div className="relative z-10 text-white py-16 px-8">
             <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10">
               {/* LEFT SIDE: Education & Experience */}
               <div>
-                <h3 className="text-[#f6b41a] text-2xl font-bold mb-6">
+                <h3 className="text-white text-2xl font-bold mb-6">
                   Education
                 </h3>
                 <ul className="space-y-4">
                   {education.map((edu, i) => (
                     <li key={i} className="flex flex-col">
                       <div className="flex items-center gap-2">
-                        <span className="text-[#f6b41a] font-bold text-sm">
+                        <span className="text-gray-400 font-bold text-sm">
                           {edu.year}
                         </span>
                         <span className="text-white font-medium">
@@ -286,7 +286,7 @@ const AboutSection = ({ onClose }) => {
                 </ul>
 
                 {/* Experience Box */}
-                <div className="bg-[#f6b41a] text-black p-6 rounded-md mt-10 shadow-lg">
+                <div className="bg-white text-black p-6 rounded-md mt-10 shadow-lg">
                   <h3 className="text-xl font-bold mb-4">Experience</h3>
                   {experience.map((exp, i) => (
                     <div key={i} className="mb-4">
@@ -315,7 +315,7 @@ const AboutSection = ({ onClose }) => {
 
               {/* RIGHT SIDE: Technical Skills, Language, Hobbies */}
               <div>
-                <h3 className="text-[#f6b41a] text-2xl font-bold mb-6">
+                <h3 className="text-white text-2xl font-bold mb-6">
                   Technical skills
                 </h3>
 
@@ -361,9 +361,7 @@ const AboutSection = ({ onClose }) => {
                   </div>
                 </div>
 
-                <h3 className="text-[#f6b41a] text-2xl font-bold mb-4">
-                  Language
-                </h3>
+                <h3 className="text-white text-2xl font-bold mb-4">Language</h3>
                 <ul className="text-sm space-y-2 mb-8">
                   {languages.map((lang, i) => (
                     <li key={i}>
@@ -373,7 +371,7 @@ const AboutSection = ({ onClose }) => {
                   ))}
                 </ul>
 
-                <h3 className="text-[#f6b41a] text-2xl font-bold mb-4">
+                <h3 className="text-white text-2xl font-bold mb-4">
                   Hobbies & Interests
                 </h3>
                 <p className="text-sm text-gray-300">

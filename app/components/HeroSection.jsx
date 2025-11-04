@@ -12,9 +12,50 @@ const HeroSection = ({ onScrollDown, isAboutOpen }) => {
   return (
     <section
       id="home"
-      className="relative flex items-center justify-center min-h-[80vh] scroll-mt-16 overflow-visible px-6 pt-4 pb-12"
+      className="relative flex items-center justify-center min-h-[90vh] scroll-mt-16 overflow-visible px-6 pt-4 pb-6"
     >
       <div className="absolute top-12 left-6 w-12 h-12 bg-[var(--primary-200)] rounded-full blur-3xl opacity-20 animate-pulse pointer-events-none" />
+
+      {/* Video background (autoplay, muted, loop) */}
+      <video
+        className="absolute inset-0 w-full h-full object-cover object-top z-0"
+        poster="/images/hero-image.png"
+        autoPlay
+        muted
+        loop
+        playsInline
+        aria-hidden="true"
+      >
+        <source src="/images/HeroBackground.mp4" type="video/mp4" />
+        {/* fallback image if video not supported */}
+      </video>
+
+      {/* subtle overlay so text stays readable */}
+      <div
+        className="absolute inset-0 bg-black/40 z-5 pointer-events-none"
+        aria-hidden="true"
+      />
+
+      {/* Side fades so video edges blend into black background */}
+      {/* Top fade so the top of the video blends into the black background */}
+      <div
+        className="absolute top-0 left-0 right-0 h-24 md:h-36 bg-gradient-to-b from-black to-transparent z-5 pointer-events-none"
+        aria-hidden="true"
+      />
+      <div
+        className="block absolute inset-y-0 left-0 w-48 md:w-56 bg-gradient-to-r from-black/80 to-transparent z-5 pointer-events-none"
+        aria-hidden="true"
+      />
+      <div
+        className="block absolute inset-y-0 right-0 w-48 md:w-56 bg-gradient-to-l from-black/80 to-transparent z-5 pointer-events-none"
+        aria-hidden="true"
+      />
+
+      {/* Bottom fade so video visually blends into the About section */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-40 md:h-56 bg-gradient-to-b from-transparent to-black pointer-events-none z-5"
+        aria-hidden="true"
+      />
 
       <div className="w-full max-w-4xl mx-auto z-10">
         <div
@@ -28,13 +69,11 @@ const HeroSection = ({ onScrollDown, isAboutOpen }) => {
               leftRevealed ? "anim-fade-in anim-delay-150" : "opacity-0"
             }`}
           >
-            🚀 Let’s build something amazing together
+            Let’s build something amazing together
           </p>
 
           <h1 className="text-white text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary-700)] to-[var(--primary-500)]">
-              Hello, I'm
-            </span>
+            <span className="text-black bg-white">Hello, I'm</span>
             <br />
             <span
               className={`mb-2 mt-3 inline-block ${
@@ -45,7 +84,7 @@ const HeroSection = ({ onScrollDown, isAboutOpen }) => {
                 sequence={[
                   "Qadri Aditya H. R.",
                   1000,
-                  "Web Developer",
+                  "Front-end Developer",
                   1000,
                   "UI/UX Designer",
                   1000,
@@ -71,12 +110,12 @@ const HeroSection = ({ onScrollDown, isAboutOpen }) => {
               leftRevealed ? "anim-fade-in anim-delay-400" : "opacity-0"
             }`}
           >
-            <button className="px-6 py-3 rounded-full bg-primary text-white font-semibold shadow-md hover:scale-105 hover:bg-[var(--primary-700)] transition-all">
+            <button className="px-6 py-1.5 rounded-full bg-white text-black shadow-md hover:scale-105 hover:bg-white/80 transition-all">
               Download CV
             </button>
             <a
               href="#projects"
-              className="px-6 py-3 rounded-full border border-white/30 text-white font-semibold hover:bg-white/5 transition-all flex items-center gap-2"
+              className="px-6 py-1.5 rounded-full border border-white/30 text-white font-semibold hover:bg-white/5 transition-all flex items-center gap-2"
             >
               <ArrowDownCircleIcon className="h-5 w-5 text-white" />
               See My Work
@@ -148,7 +187,7 @@ const HeroSection = ({ onScrollDown, isAboutOpen }) => {
         }
       `}</style>
       {/* Scroll down button */}
-      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20 flex flex-col items-center">
+      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 flex flex-col items-center">
         <button
           onClick={() => {
             if (typeof onScrollDown === "function") onScrollDown();
@@ -159,7 +198,7 @@ const HeroSection = ({ onScrollDown, isAboutOpen }) => {
           }}
           aria-expanded={!!isAboutOpen}
           aria-controls="about"
-          className={`relative px-5 py-3 rounded-full text-white font-semibold shadow-lg hover:brightness-95 hover:scale-105 transition-transform flex items-center gap-2 bg-[var(--primary-500)]`}
+          className={`relative px-5 py-1 text-sm rounded-full text-white shadow-lg hover:brightness-95 hover:scale-105 transition-transform flex items-center gap-2 bg-black/60 backdrop-blur-md"`}
         >
           <span className="select-none">{isAboutOpen ? "Close" : "About"}</span>
           <svg
