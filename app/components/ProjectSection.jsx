@@ -29,6 +29,14 @@ const SAMPLE_PROJECTS = [
     tags: ["React", "Redux", "Stripe"],
     link: "#",
   },
+  {
+    title: "Portfolio Redesign",
+    description:
+      "A redesigned personal portfolio focused on accessibility and performance.",
+    image: "/images/ProjectCard/PortfolioRedesign.png",
+    tags: ["Next.js", "Tailwind", "Accessibility"],
+    link: "#",
+  },
 ];
 
 const ProjectSection = () => {
@@ -78,8 +86,11 @@ const ProjectSection = () => {
           </p>
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Projects Grid
+            - single column on the smallest screens for narrow phones
+            - 2 columns starting at `sm` (typical mobile landscape / larger phones)
+            - 4 columns on large screens */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {SAMPLE_PROJECTS.map((p, i) => (
             <ProjectCard key={i} project={p} />
           ))}
@@ -122,7 +133,7 @@ const ProjectSection = () => {
                   </a>
                   <a
                     href="mailto:qadriaditya6@gmail.com"
-                    className="px-4 py-2 rounded-md bg-gradient-to-r from-[#7C5BFF] to-[#5a3cff] text-white font-semibold shadow-md hover:opacity-90 transition"
+                    className="px-4 py-2 rounded-md border border-black/20 text-black bg-white  hover:bg-blue-700/80 hover:text-white/90 font-semibold shadow-md hover:opacity-90 transition"
                   >
                     Email Me
                   </a>

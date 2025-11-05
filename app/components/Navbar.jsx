@@ -25,8 +25,8 @@ const Navbar = ({ onToggleAbout }) => {
         navRevealed ? "anim-slide-down" : "-translate-y-6 opacity-0"
       }`}
     >
-      <div className="max-w-xl mx-auto bg-white backdrop-blur-sm rounded-full shadow-xl">
-        <div className="flex items-center justify-between px-8 py-3">
+      <div className="max-w-full md:max-w-xl mx-auto bg-white md:backdrop-blur-sm md:rounded-full md:shadow-xl">
+        <div className="flex items-center justify-between px-4 md:px-8 py-2 md:py-3">
           {/* Left Menu */}
           <div className="hidden md:flex items-center space-x-8">
             {leftLinks.map((link, index) => (
@@ -50,7 +50,7 @@ const Navbar = ({ onToggleAbout }) => {
           {/* Center Logo */}
           <Link
             href={"/"}
-            className="flex items-center justify-center w-11 h-7 bg-black rounded-es-xl text-white font-bold text-lg"
+            className="flex items-center justify-center w-10 h-10 bg-black rounded-full text-white font-bold text-lg"
           >
             <span className="text-white">A</span>
           </Link>
@@ -72,7 +72,7 @@ const Navbar = ({ onToggleAbout }) => {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="flex items-center px-3 py-2 text-white"
+              className="flex items-center px-3 py-2 text-black"
               aria-label={isOpen ? "Close menu" : "Open menu"}
             >
               {isOpen ? (
@@ -86,7 +86,7 @@ const Navbar = ({ onToggleAbout }) => {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden border-t border-white/10">
+          <div className="md:hidden border-t border-black/10">
             <ul className="flex flex-col items-center p-4 space-y-3">
               {navLinks.map((link, index) => (
                 <Link

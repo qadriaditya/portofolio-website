@@ -147,11 +147,11 @@ const AboutSection = ({ onClose }) => {
           }}
         />
         <div className="relative z-10 text-white min-h-screen flex flex-col justify-center overflow-hidden">
-          <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 px-8 py-3 items-center">
+          <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 px-4 sm:px-8 py-3 items-center">
             {/* LEFT TEXT */}
             <div>
               <h1
-                className={`text-[56px] leading-tight font-extrabold text-white transition-all duration-600 ease-out ${
+                className={`text-3xl sm:text-4xl md:text-5xl lg:text-[56px] leading-tight font-extrabold text-white transition-all duration-600 ease-out ${
                   revealed && isVisible
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-6"
@@ -180,7 +180,7 @@ const AboutSection = ({ onClose }) => {
 
             {/* RIGHT PROFILE */}
             <div className="flex justify-center lg:justify-end relative">
-              <div className="relative w-[320px] sm:w-[380px] md:w-[440px] lg:w-[480px] max-w-full">
+              <div className="relative w-full sm:w-[320px] md:w-[440px] lg:w-[480px] max-w-full">
                 {/* subtle decorative block shifted to the right for depth */}
                 <div
                   className="absolute top-8 right-0 bg-gray-800 rounded-lg -z-10"
@@ -203,7 +203,7 @@ const AboutSection = ({ onClose }) => {
                   <img
                     src="/images/about-image.png"
                     alt=""
-                    className="object-cover w-full h-[500px] rounded-lg"
+                    className="object-cover w-full h-64 sm:h-80 md:h-96 lg:h-[500px] rounded-lg"
                   />
                 </div>
 

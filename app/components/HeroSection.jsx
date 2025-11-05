@@ -59,28 +59,28 @@ const HeroSection = ({ onScrollDown, isAboutOpen }) => {
 
       {/* subtle overlay so text stays readable */}
       <div
-        className="absolute inset-0 bg-black/40 z-5 pointer-events-none"
+        className="absolute inset-0 bg-black/40 z-[5] pointer-events-none"
         aria-hidden="true"
       />
 
       {/* Side fades so video edges blend into black background */}
       {/* Top fade so the top of the video blends into the black background */}
       <div
-        className="absolute top-0 left-0 right-0 h-24 md:h-36 bg-gradient-to-b from-black to-transparent z-5 pointer-events-none"
+        className="absolute top-0 left-0 right-0 h-24 md:h-36 bg-gradient-to-b from-black to-transparent z-[5] pointer-events-none"
         aria-hidden="true"
       />
       <div
-        className="block absolute inset-y-0 left-0 w-48 md:w-56 bg-gradient-to-r from-black/80 to-transparent z-5 pointer-events-none"
+        className="block absolute inset-y-0 left-0 w-48 md:w-56 bg-gradient-to-r from-black/80 to-transparent z-[5] pointer-events-none"
         aria-hidden="true"
       />
       <div
-        className="block absolute inset-y-0 right-0 w-48 md:w-56 bg-gradient-to-l from-black/80 to-transparent z-5 pointer-events-none"
+        className="block absolute inset-y-0 right-0 w-48 md:w-56 bg-gradient-to-l from-black/80 to-transparent z-[5] pointer-events-none"
         aria-hidden="true"
       />
 
       {/* Bottom fade so video visually blends into the About section */}
       <div
-        className="absolute bottom-0 left-0 right-0 h-40 md:h-56 bg-gradient-to-b from-transparent to-black pointer-events-none z-5"
+        className="absolute bottom-0 left-0 right-0 h-40 md:h-56 bg-gradient-to-b from-transparent to-black pointer-events-none z-[5]"
         aria-hidden="true"
       />
 
@@ -141,13 +141,13 @@ const HeroSection = ({ onScrollDown, isAboutOpen }) => {
             <a
               href="/CVQadriAditya.pdf"
               download
-              className="px-6 py-1.5 rounded-full bg-white text-black shadow-md hover:scale-105 hover:bg-white/80 transition-all inline-flex items-center justify-center"
+              className="w-full sm:w-auto px-6 py-2 rounded-full bg-white text-black shadow-md hover:scale-105 hover:bg-white/80 transition-all inline-flex items-center justify-center"
             >
               Download CV
             </a>
             <a
               href="#projects"
-              className="px-6 py-1.5 rounded-full border border-white/30 text-white font-semibold hover:bg-white/5 transition-all flex items-center gap-2"
+              className="w-full sm:w-auto px-6 py-2 rounded-full border border-white/30 text-white font-semibold hover:bg-white/5 transition-all flex items-center gap-2 justify-center"
             >
               <ArrowDownCircleIcon className="h-5 w-5 text-white" />
               See My Work
@@ -181,8 +181,9 @@ const HeroSection = ({ onScrollDown, isAboutOpen }) => {
                 Creates Professional Design That’s
                 <br /> Oriented Towards Client Needs
               </h3>
-              {/* purple progress pill */}
-              <div className="flex justify-center mt-4">
+
+              {/* purple progress pill (hidden on small screens for simplicity) */}
+              <div className="hidden sm:flex justify-center mt-4">
                 <div className="h-1.5 w-48 bg-white/10 rounded-full relative">
                   <div className="absolute left-1/2 -translate-x-1/2 top-0 -mt-1 bg-white h-1.5 w-24 rounded-full shadow-lg" />
                 </div>
@@ -199,17 +200,17 @@ const HeroSection = ({ onScrollDown, isAboutOpen }) => {
               >
                 <div className="flex items-center justify-center gap-6 md:gap-8">
                   {/* Cards container */}
-                  <div className="w-full max-w-3xl mx-auto px-2">
+                  <div className="w-full max-w-5xl mx-auto px-2">
                     <div className="flex items-center justify-center">
-                      <div className="w-full overflow-visible">
-                        <div className="flex items-center justify-center gap-6 md:gap-8 transition-all duration-400 ease-out">
+                      <div className="w-full overflow-x-auto -mx-4 px-4 sm:overflow-visible sm:mx-0 sm:px-0">
+                        <div className="flex items-center justify-center gap-6 md:gap-8 transition-all duration-400 ease-out flex-nowrap snap-x snap-mandatory">
                           {items.map((it, i) => {
                             const isActive = i === active;
                             return (
                               <div
                                 key={it.title}
                                 onClick={() => setActive(i)}
-                                className={`min-w-[220px] md:min-w-[260px] lg:min-w-[300px] rounded-xl p-6 flex flex-col items-center gap-4 cursor-pointer transition-all duration-400 ease-out transform ${
+                                className={`min-w-[220px] md:min-w-[260px] lg:min-w-[300px] rounded-xl p-6 flex flex-col items-center gap-4 cursor-pointer transition-all duration-400 ease-out transform flex-shrink-0 snap-start ${
                                   isActive
                                     ? "scale-100 bg-white/6 shadow-2xl border border-white/10"
                                     : "scale-90 opacity-40 bg-white/5"

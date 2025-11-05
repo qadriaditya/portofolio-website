@@ -27,7 +27,7 @@ const ContactSection = () => {
             : "opacity-0 translate-y-6"
         }`}
       >
-        <h2 className="text-4xl md:text-7xl lg:text-8xl font-extrabold text-white leading-tight tracking-tight">
+        <h2 className="text-4xl md:text-7xl lg:text-8xl font-extrabold text-white leading-tight tracking-tight mt-10">
           STAY WILD INTO
           <br />
           YOUR IDEAS.

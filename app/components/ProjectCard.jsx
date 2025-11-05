@@ -15,7 +15,7 @@ const ProjectCard = ({ project }) => {
     >
       {/* Image */}
       {project?.image && (
-        <div className="relative w-full h-48 sm:h-56 overflow-hidden">
+        <div className="relative w-full h-28 sm:h-32 md:h-40 overflow-hidden">
           <Image
             src={project.image}
             alt={project.title}
@@ -26,17 +26,17 @@ const ProjectCard = ({ project }) => {
       )}
 
       {/* Content */}
-      <div className="p-6">
-        <h3 className="text-black text-xl sm:text-2xl font-bold mb-3">
+      <div className="p-4">
+        <h3 className="text-black text-base sm:text-lg font-bold mb-2">
           {project?.title || "Project Title"}
         </h3>
-        <p className="text-black/90 text-sm sm:text-base leading-relaxed mb-4">
+        <p className="text-black/90 text-sm sm:text-sm leading-relaxed mb-3">
           {project?.description || "Project description goes here."}
         </p>
 
         {/* Tags */}
         {project?.tags && project.tags.length > 0 && (
-          <div className="flex flex-wrap gap-2 mb-4">
+          <div className="flex flex-wrap gap-2 mb-3">
             {project.tags.map((tag, idx) => (
               <span
                 key={idx}
