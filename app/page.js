@@ -1,11 +1,5 @@
-import Navbar from "./components/Navbar";
-import MainContentClient from "./components/MainContentClient";
+import AppShellClient from "./components/AppShellClient";
 
 export default function Home() {
-  return (
-    <div>
-      <Navbar />
-      <MainContentClient />
-    </div>
-  );
+  return <AppShellClient />;
 }

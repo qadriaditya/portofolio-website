@@ -150,13 +150,27 @@ const AboutSection = ({ onClose }) => {
           <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 px-8 py-3 items-center">
             {/* LEFT TEXT */}
             <div>
-              <h1 className="text-[56px] leading-tight font-extrabold text-white">
+              <h1
+                className={`text-[56px] leading-tight font-extrabold text-white transition-all duration-600 ease-out ${
+                  revealed && isVisible
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-6"
+                }`}
+                style={{ transitionDelay: "150ms" }}
+              >
                 Hello,{" "}
                 <span className="block">
                   I’m <span className="text-gray-300">Adit</span>
                 </span>
               </h1>
-              <p className="mt-6 text-[16px] text-gray-300 leading-relaxed max-w-lg">
+              <p
+                className={`mt-6 text-[16px] text-gray-300 leading-relaxed max-w-lg transition-all duration-600 ease-out ${
+                  revealed && isVisible
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-6"
+                }`}
+                style={{ transitionDelay: "250ms" }}
+              >
                 I am a self-taught Graphic Designer based in Viet Nam with
                 extensive marketing and communication experience. I am currently
                 living in France and pursuing a degree in Digital Web & Project
@@ -178,7 +192,14 @@ const AboutSection = ({ onClose }) => {
                 />
 
                 {/* image card */}
-                <div className="relative rounded-lg overflow-hidden shadow-lg ring-2 ring-black/40">
+                <div
+                  className={`relative rounded-lg overflow-hidden shadow-lg ring-2 ring-black/40 transition-all duration-700 ease-out ${
+                    revealed && isVisible
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 translate-y-6"
+                  }`}
+                  style={{ transitionDelay: "200ms" }}
+                >
                   <img
                     src="/images/about-image.png"
                     alt=""
@@ -187,7 +208,14 @@ const AboutSection = ({ onClose }) => {
                 </div>
 
                 {/* name/title caption */}
-                <div className="mt-4 text-center lg:text-right">
+                <div
+                  className={`mt-4 text-center lg:text-right transition-all duration-700 ease-out ${
+                    revealed && isVisible
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 translate-y-6"
+                  }`}
+                  style={{ transitionDelay: "300ms" }}
+                >
                   <h4 className="text-lg font-bold text-white"></h4>
                   <p className="text-sm text-gray-300">
                     Graphic Designer & Web Enthusiast
@@ -214,6 +242,7 @@ const AboutSection = ({ onClose }) => {
               aria-controls="about-bottom"
               aria-label={bottomVisible ? "Hide details" : "Show more"}
               className="px-5 py-2 rounded-full bg-[var(--primary-500)] text-white font-semibold shadow-lg hover:brightness-95 hover:scale-105 transition-transform flex items-center gap-2 pointer-events-auto focus:outline-none focus:ring-4 focus:ring-[var(--primary-500)]/40"
+              style={{ transitionDelay: "380ms" }}
             >
               <span className="select-none">
                 {bottomVisible ? "Hide details" : "Show more"}
@@ -261,85 +290,68 @@ const AboutSection = ({ onClose }) => {
             }}
           />
           <div className="relative z-10 text-white py-16 px-8">
-            <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10">
-              {/* LEFT SIDE: Education & Experience */}
-              <div>
-                <h3 className="text-white text-2xl font-bold mb-6">
-                  Education
-                </h3>
-                <ul className="space-y-4">
-                  {education.map((edu, i) => (
-                    <li key={i} className="flex flex-col">
-                      <div className="flex items-center gap-2">
-                        <span className="text-gray-400 font-bold text-sm">
-                          {edu.year}
-                        </span>
-                        <span className="text-white font-medium">
-                          {edu.place}
-                        </span>
-                      </div>
-                      <span className="text-gray-300 text-sm">
-                        {edu.degree}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
+            <div className="max-w-6xl mx-auto">
+              {/* ONLY show Technical skills, Languages, Hobbies & Interests */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {/* Technical skills */}
+                <div>
+                  <h3
+                    className={`text-white text-2xl font-bold mb-4 transition-all duration-500 ease-out ${
+                      bottomVisible
+                        ? "opacity-100 translate-y-0"
+                        : "opacity-0 -translate-y-3"
+                    }`}
+                    style={{ transitionDelay: "80ms" }}
+                  >
+                    Technical skills
+                  </h3>
 
-                {/* Experience Box */}
-                <div className="bg-white text-black p-6 rounded-md mt-10 shadow-lg">
-                  <h3 className="text-xl font-bold mb-4">Experience</h3>
-                  {experience.map((exp, i) => (
-                    <div key={i} className="mb-4">
-                      <div className="font-bold">{exp.year}</div>
-                      <div className="font-semibold">{exp.title}</div>
-                      <p className="text-sm text-gray-800">{exp.details}</p>
-                    </div>
-                  ))}
-                  <div className="flex flex-wrap gap-2 mt-3">
-                    {[
-                      "#Creativity",
-                      "#Communication",
-                      "#Detail-oriented",
-                      "#Adaptability",
-                    ].map((tag, i) => (
-                      <span
-                        key={i}
-                        className="bg-black text-white text-xs px-3 py-1 rounded-full"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* RIGHT SIDE: Technical Skills, Language, Hobbies */}
-              <div>
-                <h3 className="text-white text-2xl font-bold mb-6">
-                  Technical skills
-                </h3>
-
-                <div className="mb-6">
-                  <p className="text-sm font-semibold mb-2">Software Skills</p>
-                  <div className="flex flex-wrap gap-2">
+                  <p
+                    className={`text-sm font-semibold mb-2 transition-all duration-500 ease-out ${
+                      bottomVisible
+                        ? "opacity-100 translate-y-0"
+                        : "opacity-0 -translate-y-3"
+                    }`}
+                    style={{ transitionDelay: "140ms" }}
+                  >
+                    Software
+                  </p>
+                  <div className="flex flex-wrap gap-2 mb-4">
                     {skills.softwares.map((s, i) => (
                       <div
                         key={i}
-                        className="bg-white text-black text-sm px-3 py-1 rounded font-semibold"
+                        className={`bg-white text-black text-sm px-3 py-1 rounded font-semibold transition-all duration-500 ease-out ${
+                          bottomVisible
+                            ? "opacity-100 translate-y-0"
+                            : "opacity-0 -translate-y-2"
+                        }`}
+                        style={{ transitionDelay: `${160 + i * 40}ms` }}
                       >
                         {s}
                       </div>
                     ))}
                   </div>
-                </div>
 
-                <div className="mb-6">
-                  <p className="text-sm font-semibold mb-2">Coding Skills</p>
-                  <div className="flex flex-wrap gap-2 text-sm">
+                  <p
+                    className={`text-sm font-semibold mb-2 transition-all duration-500 ease-out ${
+                      bottomVisible
+                        ? "opacity-100 translate-y-0"
+                        : "opacity-0 -translate-y-3"
+                    }`}
+                    style={{ transitionDelay: "260ms" }}
+                  >
+                    Coding
+                  </p>
+                  <div className="flex flex-wrap gap-2">
                     {skills.coding.map((c, i) => (
                       <span
                         key={i}
-                        className="px-3 py-1 bg-transparent border border-white rounded"
+                        className={`px-3 py-1 bg-transparent border border-white rounded text-sm transition-all duration-500 ease-out ${
+                          bottomVisible
+                            ? "opacity-100 translate-y-0"
+                            : "opacity-0 -translate-y-2"
+                        }`}
+                        style={{ transitionDelay: `${280 + i * 40}ms` }}
                       >
                         {c}
                       </span>
@@ -347,36 +359,59 @@ const AboutSection = ({ onClose }) => {
                   </div>
                 </div>
 
-                <div className="mb-6">
-                  <p className="text-sm font-semibold mb-2">Other</p>
-                  <div className="flex flex-wrap gap-2">
-                    {skills.tags.map((t, i) => (
-                      <span
+                {/* Languages */}
+                <div>
+                  <h3
+                    className={`text-white text-2xl font-bold mb-4 transition-all duration-500 ease-out ${
+                      bottomVisible
+                        ? "opacity-100 translate-y-0"
+                        : "opacity-0 -translate-y-3"
+                    }`}
+                    style={{ transitionDelay: "120ms" }}
+                  >
+                    Languages
+                  </h3>
+                  <ul className="text-sm space-y-3">
+                    {languages.map((lang, i) => (
+                      <li
                         key={i}
-                        className="px-3 py-1 bg-black text-white text-xs rounded-full"
+                        className={`transition-all duration-500 ease-out ${
+                          bottomVisible
+                            ? "opacity-100 translate-y-0"
+                            : "opacity-0 -translate-y-2"
+                        }`}
+                        style={{ transitionDelay: `${160 + i * 40}ms` }}
                       >
-                        {t}
-                      </span>
+                        <span className="font-semibold">{lang.name}</span>
+                        <span className="text-gray-300"> — {lang.level}</span>
+                      </li>
                     ))}
-                  </div>
+                  </ul>
                 </div>
 
-                <h3 className="text-white text-2xl font-bold mb-4">Language</h3>
-                <ul className="text-sm space-y-2 mb-8">
-                  {languages.map((lang, i) => (
-                    <li key={i}>
-                      <span className="font-semibold">{lang.name}</span> —{" "}
-                      <span className="text-gray-300">{lang.level}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <h3 className="text-white text-2xl font-bold mb-4">
-                  Hobbies & Interests
-                </h3>
-                <p className="text-sm text-gray-300">
-                  Photography, travel, illustration, and cooking.
-                </p>
+                {/* Hobbies & Interests */}
+                <div>
+                  <h3
+                    className={`text-white text-2xl font-bold mb-4 transition-all duration-500 ease-out ${
+                      bottomVisible
+                        ? "opacity-100 translate-y-0"
+                        : "opacity-0 -translate-y-3"
+                    }`}
+                    style={{ transitionDelay: "160ms" }}
+                  >
+                    Hobbies & Interests
+                  </h3>
+                  <p
+                    className={`text-sm text-gray-300 transition-all duration-500 ease-out ${
+                      bottomVisible
+                        ? "opacity-100 translate-y-0"
+                        : "opacity-0 -translate-y-2"
+                    }`}
+                    style={{ transitionDelay: "200ms" }}
+                  >
+                    Photography, travel, illustration, and cooking.
+                  </p>
+                </div>
               </div>
             </div>
           </div>

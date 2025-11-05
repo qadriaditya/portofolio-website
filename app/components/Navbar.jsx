@@ -1,43 +1,45 @@
 "use client";
 import Link from "next/link";
 import React, { useState } from "react";
+import useReveal from "../hooks/useReveal";
 import NavLink from "./NavLink";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 
 const navLinks = [
-  {
-    title: "Home",
-    path: "#home",
-  },
-  {
-    title: "About",
-    path: "#about",
-  },
-  {
-    title: "Projects",
-    path: "#projects",
-  },
-  {
-    title: "Contact",
-    path: "#contact",
-  },
+  { title: "Home", path: "#home" },
+  { title: "About", path: "#about" },
+  { title: "Projects", path: "#projects" },
+  { title: "Contact", path: "#contact" },
 ];
 
-const Navbar = () => {
+const Navbar = ({ onToggleAbout }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const leftLinks = navLinks.slice(0, 2); // Home, About
-  const rightLinks = navLinks.slice(2); // Projects, Contact
+  const { ref: navRef, revealed: navRevealed } = useReveal({ threshold: 0 });
+  const leftLinks = navLinks.slice(0, 2);
+  const rightLinks = navLinks.slice(2);
 
   return (
-    <nav className="sticky top-4 left-0 right-0 z-40 px-4">
+    <nav
+      ref={navRef}
+      className={`sticky top-4 left-0 right-0 z-40 px-4 transition-transform duration-500 ${
+        navRevealed ? "anim-slide-down" : "-translate-y-6 opacity-0"
+      }`}
+    >
       <div className="max-w-xl mx-auto bg-white backdrop-blur-sm rounded-full shadow-xl">
         <div className="flex items-center justify-between px-8 py-3">
           {/* Left Menu */}
-          <div className="hidden md:flex items-center space-x-13">
+          <div className="hidden md:flex items-center space-x-8">
             {leftLinks.map((link, index) => (
               <Link
                 key={index}
                 href={link.path}
+                onClick={(e) => {
+                  // if About link, call toggle instead of default jump
+                  if (link.title === "About") {
+                    e.preventDefault();
+                    if (typeof onToggleAbout === "function") onToggleAbout();
+                  }
+                }}
                 className="text-black/70 hover:text-green-800 transition-colors text-base"
               >
                 {link.title}
@@ -54,7 +56,7 @@ const Navbar = () => {
           </Link>
 
           {/* Right Menu */}
-          <div className="hidden md:flex items-center space-x-13">
+          <div className="hidden md:flex items-center space-x-8">
             {rightLinks.map((link, index) => (
               <Link
                 key={index}
@@ -71,6 +73,7 @@ const Navbar = () => {
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="flex items-center px-3 py-2 text-white"
+              aria-label={isOpen ? "Close menu" : "Open menu"}
             >
               {isOpen ? (
                 <XMarkIcon className="h-6 w-6" />
@@ -89,8 +92,14 @@ const Navbar = () => {
                 <Link
                   key={index}
                   href={link.path}
+                  onClick={(e) => {
+                    setIsOpen(false);
+                    if (link.title === "About") {
+                      e.preventDefault();
+                      if (typeof onToggleAbout === "function") onToggleAbout();
+                    }
+                  }}
                   className="text-black hover:text-green-800 border-b-green-800 transition-colors text-sm font-medium"
-                  onClick={() => setIsOpen(false)}
                 >
                   {link.title}
                 </Link>

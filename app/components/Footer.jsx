@@ -1,8 +1,16 @@
 import React from "react";
+import useReveal from "../hooks/useReveal";
 
 const Footer = () => {
+  const { ref, revealed } = useReveal({ threshold: 0.05 });
+
   return (
-    <footer className="w-full bg-white border-t border-gray-100 py-8 mt-12">
+    <footer
+      ref={ref}
+      className={`w-full bg-white border-t border-gray-100 py-8 mt-12 transition-all duration-700 ${
+        revealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+      }`}
+    >
       <div className="w-full mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="text-sm text-muted">
           © {new Date().getFullYear()} Qadri Aditya. All rights reserved.

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import useReveal from "../hooks/useReveal";
 import ProjectCard from "./ProjectCard";
 import PoliceLine from "./PoliceLine";
 
@@ -49,6 +50,8 @@ const ProjectSection = () => {
     return () => obs.disconnect();
   }, [sectionRef.current]);
 
+  const { ref: ctaRef, revealed: ctaRevealed } = useReveal({ threshold: 0.12 });
+
   return (
     <section id="projects" className="py-16 bg-black" ref={sectionRef}>
       <div className="max-w-7xl mx-auto px-6">
@@ -80,6 +83,53 @@ const ProjectSection = () => {
           {SAMPLE_PROJECTS.map((p, i) => (
             <ProjectCard key={i} project={p} />
           ))}
+        </div>
+
+        {/* CTA BAND - ask about projects (animated) */}
+        <div className="mt-10">
+          <div
+            ref={ctaRef}
+            className={`rounded-xl bg-black/60 p-6 md:p-8 shadow-lg backdrop-blur-md ${
+              ctaRevealed
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 -translate-y-6"
+            }`}
+            id="projects-cta"
+          >
+            <div className="max-w-7xl mx-auto px-2">
+              <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div
+                  className="transition-all duration-500 ease-out"
+                  data-animate="true"
+                >
+                  <h3 className="text-white text-2xl md:text-3xl font-bold">
+                    Have any project in mind?
+                  </h3>
+                  <p className="text-white/60 mt-1">
+                    I'm available for freelancing
+                  </p>
+                </div>
+
+                <div
+                  className="flex items-center gap-4 transition-all duration-500 ease-out"
+                  data-animate="true"
+                >
+                  <a
+                    href="#projects"
+                    className="px-4 py-2 rounded-md border border-white/20 text-white hover:bg-white/5 transition"
+                  >
+                    More Projects
+                  </a>
+                  <a
+                    href="mailto:qadriaditya6@gmail.com"
+                    className="px-4 py-2 rounded-md bg-gradient-to-r from-[#7C5BFF] to-[#5a3cff] text-white font-semibold shadow-md hover:opacity-90 transition"
+                  >
+                    Email Me
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

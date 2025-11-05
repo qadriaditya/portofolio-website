@@ -16,10 +16,10 @@ export const metadata = {
   title: "My Portfolio",
   description: "Portfolio with smooth animated background",
   icons: [
-    { rel: "icon", url: "/images/Logo.png", sizes: "32x32", type: "image/png" },
-    { rel: "icon", url: "/images/Logo.png", sizes: "16x16", type: "image/png" },
-    { rel: "shortcut icon", url: "/images/Logo.png" },
-    { rel: "apple-touch-icon", url: "/images/Logo.png" },
+    { rel: "icon", url: "/Logo.png", sizes: "32x32", type: "image/png" },
+    { rel: "icon", url: "/Logo.png", sizes: "16x16", type: "image/png" },
+    { rel: "shortcut icon", url: "/Logo.png" },
+    { rel: "apple-touch-icon", url: "/Logo.png" },
   ],
 };
 
@@ -28,10 +28,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         {/* Explicit link tags can help browsers pick up the PNG favicon immediately */}
-        <link rel="icon" href="/images/Logo.png" sizes="32x32" />
-        <link rel="icon" href="/images/Logo.png" sizes="16x16" />
-        <link rel="shortcut icon" href="/images/Logo.png" />
-        <link rel="apple-touch-icon" href="/images/Logo.png" />
+        <link rel="icon" href="/Logo.png" sizes="32x32" />
+        <link rel="icon" href="/Logo.png" sizes="16x16" />
+        <link rel="shortcut icon" href="/Logo.png" />
+        <link rel="apple-touch-icon" href="/Logo.png" />
       </head>
       <body
         className={`min-h-screen transition-all duration-700 ${geistSans.variable} ${geistMono.variable} antialiased inverted`}
