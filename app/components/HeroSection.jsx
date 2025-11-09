@@ -13,9 +13,9 @@ const HeroSection = ({ onScrollDown, isAboutOpen }) => {
   });
   const [active, setActive] = useState(1); // center card index (0..n-1)
   const items = [
-    { title: "Content Design", icon: "content" },
+    { title: "Web Development", icon: "web" },
     { title: "Mobile App Design", icon: "mobile" },
-    { title: "Web Design", icon: "web" },
+    { title: "Web Design", icon: "content" },
   ];
 
   useEffect(() => {
@@ -43,19 +43,8 @@ const HeroSection = ({ onScrollDown, isAboutOpen }) => {
     >
       <div className="absolute top-12 left-6 w-12 h-12 bg-[var(--primary-200)] rounded-full blur-3xl opacity-20 animate-pulse pointer-events-none" />
 
-      {/* Video background (autoplay, muted, loop) */}
-      <video
-        className="absolute inset-0 w-full h-full object-cover object-top z-0"
-        poster="/images/hero-image.png"
-        autoPlay
-        muted
-        loop
-        playsInline
-        aria-hidden="true"
-      >
-        <source src="/images/HeroBackground.mp4" type="video/mp4" />
-        {/* fallback image if video not supported */}
-      </video>
+      {/* Plain background (image/video removed) */}
+      <div className="absolute inset-0 z-0 bg-black" aria-hidden="true" />
 
       {/* subtle overlay so text stays readable */}
       <div
@@ -111,7 +100,7 @@ const HeroSection = ({ onScrollDown, isAboutOpen }) => {
                 sequence={[
                   "Qadri Aditya H. R.",
                   1000,
-                  "Front-end Developer",
+                  "Front-end Dev",
                   1000,
                   "UI/UX Designer",
                   1000,
