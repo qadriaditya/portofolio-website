@@ -1,28 +1,23 @@
 "use client";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
-export default function PageTransitionWrapper({ children }) {
+const PageTransition = ({ children }) => {
   const pathname = usePathname();
-  const [displayKey, setDisplayKey] = useState(pathname);
-  const [state, setState] = useState("enter");
   const [isLoading, setIsLoading] = useState(false);
+  const [displayChildren, setDisplayChildren] = useState(children);
 
   useEffect(() => {
-    if (pathname !== displayKey) {
-      // start loading animation
-      setIsLoading(true);
-      setState("exit");
+    setIsLoading(true);
 
-      const t = setTimeout(() => {
-        setDisplayKey(pathname);
-        setState("enter");
-        setIsLoading(false);
-      }, 800); // match loading duration
+    // Simulate loading time
+    const timer = setTimeout(() => {
+      setDisplayChildren(children);
+      setIsLoading(false);
+    }, 800);
 
-      return () => clearTimeout(t);
-    }
-  }, [pathname, displayKey]);
+    return () => clearTimeout(timer);
+  }, [pathname, children]);
 
   return (
     <>
@@ -38,7 +33,7 @@ export default function PageTransitionWrapper({ children }) {
               </div>
             </div>
 
-            {/* Loading Text with Animated Dots */}
+            {/* Loading Text */}
             <div className="flex items-center gap-2">
               <span className="text-white text-sm font-medium">Loading</span>
               <div className="flex gap-1">
@@ -61,9 +56,15 @@ export default function PageTransitionWrapper({ children }) {
       )}
 
       {/* Page Content with Fade Animation */}
-      <div className={`page-transition ${state}`} key={displayKey}>
-        {children}
+      <div
+        className={`transition-opacity duration-500 ${
+          isLoading ? "opacity-0" : "opacity-100"
+        }`}
+      >
+        {displayChildren}
       </div>
     </>
   );
-}
+};
+
+export default PageTransition;

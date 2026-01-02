@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import PageTransitionWrapper from "./components/PageTransitionWrapper";
+import SplashScreen from "./components/SplashScreen";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,6 +37,7 @@ export default function RootLayout({ children }) {
       <body
         className={`min-h-screen transition-all duration-700 ${geistSans.variable} ${geistMono.variable} antialiased inverted`}
       >
+        <SplashScreen />
         <PageTransitionWrapper>{children}</PageTransitionWrapper>
       </body>
     </html>
