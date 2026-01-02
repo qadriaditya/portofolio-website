@@ -4,37 +4,405 @@ html {
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #000000;
+  --foreground: #ffffff;
   --primary-50: #e0f7f8;
   --primary-100: #b3ecef;
-  --primary-500: #00adb5; /* cyan-500 */
-  --primary-700: #008c92; /* cyan-700 */
-  --accent-400: #14b8a6; /* teal-400 */
-  --muted-700: #475569; /* slate-600-ish */
+  --primary-500: #00adb5;
+  --primary-700: #008c92;
+  --accent-400: #14b8a6;
+  --muted-700: #475569;
 }
 
-/* CSS variables for theme are defined above in :root */
+/* Light mode - when .dark class is NOT present */
+html:not(.dark) {
+  --background: #ffffff;
+  --foreground: #1a1a2e;
+  color-scheme: light;
+}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html:not(.dark) body {
+  background: #ffffff;
+  color: #1a1a2e;
+}
+
+html:not(.dark) nav {
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+}
+
+html:not(.dark) section {
+  background: #ffffff;
+  color: #1a1a2e;
+}
+
+html:not(.dark) div {
+  /* Allow background colors to be inherited unless explicitly set */
+}
+
+/* Light mode - vibrant gradient text */
+html:not(.dark) .bg-gradient-to-r.from-indigo-400.to-purple-500 {
+  @apply bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent;
+}
+
+/* Light mode - ensure bg-white stays white */
+html:not(.dark) .bg-white {
+  @apply bg-white;
+}
+
+html:not(.dark) .bg-black {
+  @apply bg-white border border-gray-200;
+}
+
+html:not(.dark) .text-white {
+  @apply text-gray-900;
+}
+
+html:not(.dark) .text-white\/5 {
+  @apply text-gray-900/5;
+}
+
+html:not(.dark) .text-white\/6 {
+  @apply text-gray-900/6;
+}
+
+html:not(.dark) .text-white\/10 {
+  @apply text-gray-900/10;
+}
+
+html:not(.dark) .text-white\/20 {
+  @apply text-gray-900/20;
+}
+
+html:not(.dark) .text-white\/30 {
+  @apply text-gray-900/30;
+}
+
+html:not(.dark) .text-white\/40 {
+  @apply text-gray-900/40;
+}
+
+html:not(.dark) .text-white\/50 {
+  @apply text-gray-900/50;
+}
+
+html:not(.dark) .text-white\/60 {
+  @apply text-gray-700;
+}
+
+html:not(.dark) .text-white\/70 {
+  @apply text-gray-800;
+}
+
+html:not(.dark) .text-white\/80 {
+  @apply text-gray-900;
+}
+
+html:not(.dark) .text-white\/90 {
+  @apply text-gray-900;
+}
+
+html:not(.dark) .bg-white {
+  @apply bg-white;
+}
+
+html:not(.dark) .bg-white\/5 {
+  @apply bg-gray-900/4;
+}
+
+html:not(.dark) .bg-white\/6 {
+  @apply bg-gray-900/5;
+}
+
+html:not(.dark) .bg-white\/10 {
+  @apply bg-gray-900/8;
+}
+
+html:not(.dark) .bg-white\/15 {
+  @apply bg-gray-900/12;
+}
+
+html:not(.dark) .bg-white\/20 {
+  @apply bg-gray-900/15;
+}
+
+html:not(.dark) .bg-white\/30 {
+  @apply bg-gray-900/20;
+}
+
+html:not(.dark) .border-white {
+  @apply border-gray-300;
+}
+
+html:not(.dark) .border-white\/10 {
+  @apply border-gray-300/60;
+}
+
+html:not(.dark) .border-white\/20 {
+  @apply border-gray-300/80;
+}
+
+html:not(.dark) .border-white\/30 {
+  @apply border-gray-400;
+}
+
+html:not(.dark) .border-white\/40 {
+  @apply border-gray-400;
+}
+
+html:not(.dark) .border-black {
+  @apply border-gray-300;
+}
+
+html:not(.dark) .border-black\/10 {
+  @apply border-gray-300/40;
+}
+
+html:not(.dark) .border-black\/20 {
+  @apply border-gray-300/60;
+}
+
+html:not(.dark) .border-black\/30 {
+  @apply border-gray-400;
+}
+
+/* Button styling for light mode */
+html:not(.dark) .bg-gradient-to-r.from-indigo-600.to-purple-600 {
+  @apply bg-gradient-to-r from-indigo-600 to-purple-600;
+}
+
+html:not(.dark) .hover\:shadow-lg.hover\:shadow-indigo-500\/50 {
+  @apply hover:shadow-lg hover:shadow-indigo-500/25;
+}
+
+html:not(.dark) .shadow-lg.shadow-indigo-500\/50 {
+  @apply shadow-lg shadow-indigo-500/25;
+}
+
+/* Special overrides for specific elements in light mode */
+html:not(.dark) .bg-gradient-to-r.from-green-500.to-transparent {
+  @apply bg-gradient-to-r from-indigo-500 to-transparent;
+}
+
+html:not(.dark) .hover\:text-indigo-400 {
+  @apply hover:text-indigo-600;
+}
+
+html:not(.dark) .hover\:text-green-500 {
+  @apply hover:text-indigo-600;
+}
+
+html:not(.dark) .shadow-2xl.shadow-white\/10 {
+  @apply shadow-2xl shadow-indigo-600/20;
+}
+
+html:not(.dark) .hover\:shadow-lg.hover\:shadow-indigo-500\/50 {
+  @apply hover:shadow-lg hover:shadow-indigo-600/30;
+}
+
+html:not(.dark) .shadow-xl {
+  @apply shadow-xl shadow-gray-900/10;
+}
+
+html:not(.dark) .active\:scale-95 {
+  @apply active:scale-95;
+}
+
+/* Light mode background gradient improvements */
+html:not(.dark) .bg-gradient-to-b {
+  @apply bg-gradient-to-b;
+}
+
+/* Light mode card and container styles */
+html:not(.dark) [class*="bg-white/"] {
+  background-color: rgba(255, 255, 255, var(--tw-bg-opacity, 1)) !important;
+  border-color: rgba(200, 200, 200, 0.6) !important;
+}
+
+/* Light mode - Project cards should have white background */
+html:not(.dark) .aspect-video {
+  @apply bg-gray-300;
+}
+
+html:not(.dark) .rounded-xl,
+html:not(.dark) .rounded-2xl {
+  background-color: #ffffff;
+}
+
+/* Ensure Project Info section is white in light mode */
+html:not(.dark) [class*="p-5"],
+html:not(.dark) [class*="p-6"],
+html:not(.dark) [class*="p-8"] {
+  background-color: #ffffff;
+  color: inherit;
+}
+
+html:not(.dark) .hover\:bg-white {
+  @apply hover:bg-white;
+}
+
+/* Light mode text contrast improvements */
+html:not(.dark) h1,
+html:not(.dark) h2,
+html:not(.dark) h3,
+html:not(.dark) h4,
+html:not(.dark) h5,
+html:not(.dark) h6 {
+  @apply text-gray-900;
+}
+
+/* Light mode link colors */
+html:not(.dark) a {
+  @apply text-indigo-600 hover:text-indigo-700;
+}
+
+/* Light mode accent colors */
+html:not(.dark) .text-indigo-400 {
+  @apply text-indigo-600;
+}
+
+html:not(.dark) .text-purple-400 {
+  @apply text-purple-600;
+}
+
+html:not(.dark) .text-blue-400 {
+  @apply text-blue-600;
+}
+
+html:not(.dark) .text-green-400 {
+  @apply text-green-600;
+}
+
+html:not(.dark) .text-cyan-400 {
+  @apply text-cyan-600;
+}
+
+/* Light mode - Slate/Gray colors for cards */
+html:not(.dark) .bg-slate-900 {
+  @apply bg-gray-300;
+  border: 1px solid rgb(209, 213, 219);
+}
+
+html:not(.dark) .bg-slate-900\/80 {
+  @apply bg-gray-200/80;
+}
+
+/* Light mode - Green accent color remapping */
+html:not(.dark) .text-green-400 {
+  @apply text-indigo-600;
+}
+
+html:not(.dark) .text-green-500 {
+  @apply text-indigo-600;
+}
+
+html:not(.dark) .group-hover\:text-green-400 {
+  @apply group-hover:text-indigo-600;
+}
+
+html:not(.dark) .hover\:text-green-400 {
+  @apply hover:text-indigo-700;
+}
+
+/* Light mode - Text opacity improvements */
+html:not(.dark) .line-clamp-2 {
+  @apply line-clamp-2;
+}
+
+/* Light mode - Better text visibility on white backgrounds */
+html:not(.dark) p {
+  color: inherit;
+}
+
+html:not(.dark) .text-gray-700 {
+  @apply text-gray-700;
+}
+
+html:not(.dark) .text-gray-800 {
+  @apply text-gray-800;
+}
+
+/* Light mode - Card and container improvements */
+html:not(.dark) .aspect-video {
+  @apply bg-gray-200;
+}
+
+/* Light mode - Shadows for depth */
+html:not(.dark) .shadow-md {
+  @apply shadow-md shadow-gray-900/10;
+}
+
+html:not(.dark) .hover\:shadow-2xl {
+  @apply hover:shadow-lg shadow-gray-900/15;
+}
+
+html:not(.dark) .hover\:shadow-gray-400\/20 {
+  @apply hover:shadow-gray-400/20;
+}
+
+/* Light mode - Background gradients and overlays */
+html:not(.dark) .bg-green-500\/10 {
+  @apply bg-indigo-400/15;
+}
+
+html:not(.dark) .bg-blue-500\/10 {
+  @apply bg-blue-400/15;
+}
+
+html:not(.dark) .bg-gradient-to-r {
+  @apply bg-gradient-to-r;
+}
+
+/* Light mode - improved button and interactive elements */
+html:not(.dark) .rounded-full {
+  @apply rounded-full;
+}
+
+html:not(.dark) .transition-all {
+  @apply transition-all;
+}
+
+/* Light mode - shadow improvements for depth */
+html:not(.dark) .shadow-2xl {
+  @apply shadow-xl;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+html:not(.dark) .shadow-lg {
+  @apply shadow-md;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+}
+
+/* Light mode - text decorative lines */
+html:not(.dark)
+  .bg-gradient-to-r.from-transparent.via-indigo-500.to-transparent {
+  @apply bg-gradient-to-r from-transparent via-indigo-500 to-transparent;
+  opacity: 0.4;
+}
+
+html:not(.dark)
+  .bg-gradient-to-l.from-transparent.via-purple-500.to-transparent {
+  @apply bg-gradient-to-l from-transparent via-purple-500 to-transparent;
+  opacity: 0.4;
+}
+
+/* Dark mode - when .dark class IS present */
+html.dark {
+  color-scheme: dark;
+}
+
+html.dark body {
+  background: #000000;
+  color: #ffffff;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
-  /* Prevent horizontal overflow caused by decorative absolute elements */
   overflow-x: hidden;
-}
-
-/* Inverted theme: swap background/foreground */
-.inverted {
-  --background: #0a0a0a;
-  --foreground: #ffffff;
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 /* Utility helpers to reference palette in non-tailwind places */
@@ -158,8 +526,12 @@ body {
   width: 100%;
   height: 100%;
   background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mO8Ww8AAnsB7L6chLUAAAAASUVORK5CYII=");
-  opacity: 0.05;
+  opacity: 0.02;
   pointer-events: none;
+}
+
+html:not(.dark) .bg-noise::before {
+  opacity: 0.01;
 }
 
 /* Page transition styles */
@@ -186,4 +558,76 @@ body {
     rgba(0, 0, 0, 0.02)
   );
   pointer-events: none;
+}
+
+/* Performance Optimizations */
+/* Enable GPU acceleration for smooth animations */
+body {
+  will-change: background-color, color;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Optimize transitions for smooth theme switching */
+html {
+  transition: background-color 0.5s ease, color 0.5s ease;
+  will-change: background-color, color;
+}
+
+/* Optimize common animation elements */
+.anim-fade-in,
+.anim-slide-up,
+.anim-float {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Optimize button and interactive elements */
+button,
+a {
+  will-change: transform, box-shadow;
+  backface-visibility: hidden;
+}
+
+/* Optimize hover states */
+button:hover,
+a:hover {
+  will-change: transform;
+}
+
+/* Reduce paint areas for group hover effects */
+.group:hover {
+  will-change: auto;
+}
+
+/* Optimize image rendering */
+img {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Optimize scroll performance */
+* {
+  scroll-behavior: smooth;
+}
+
+/* Remove expensive box shadows on mobile */
+@media (max-width: 768px) {
+  .shadow-2xl,
+  .shadow-xl,
+  .shadow-lg {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  }
+}
+
+/* Disable animations for reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

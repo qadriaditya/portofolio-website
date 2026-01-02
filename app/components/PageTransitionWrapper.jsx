@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { usePathname } from "next/navigation";
 
 export default function PageTransitionWrapper({ children }) {
@@ -18,7 +18,7 @@ export default function PageTransitionWrapper({ children }) {
         setDisplayKey(pathname);
         setState("enter");
         setIsLoading(false);
-      }, 800); // match loading duration
+      }, 600); // reduced from 800ms for faster transitions
 
       return () => clearTimeout(t);
     }
@@ -30,10 +30,15 @@ export default function PageTransitionWrapper({ children }) {
       {isLoading && (
         <div className="fixed inset-0 bg-black z-[9999] flex items-center justify-center">
           <div className="flex flex-col items-center gap-6">
-            {/* Animated Logo */}
+            {/* Animated Logo - optimized */}
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-green-500 to-blue-500 rounded-full blur-lg opacity-75 animate-pulse"></div>
-              <div className="relative w-24 h-24 rounded-full bg-white flex items-center justify-center animate-bounce">
+              <div
+                className="relative w-24 h-24 rounded-full bg-white flex items-center justify-center"
+                style={{
+                  animation: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+                }}
+              >
                 <span className="text-4xl font-bold text-black">A</span>
               </div>
             </div>

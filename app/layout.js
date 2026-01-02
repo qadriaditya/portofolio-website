@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import PageTransitionWrapper from "./components/PageTransitionWrapper";
 import SplashScreen from "./components/SplashScreen";
+import { ThemeProvider } from "./context/ThemeContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,10 +36,12 @@ export default function RootLayout({ children }) {
         <link rel="apple-touch-icon" href="/Logo.png" />
       </head>
       <body
-        className={`min-h-screen transition-all duration-700 ${geistSans.variable} ${geistMono.variable} antialiased inverted`}
+        className={`min-h-screen transition-all duration-700 ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <SplashScreen />
-        <PageTransitionWrapper>{children}</PageTransitionWrapper>
+        <ThemeProvider>
+          <SplashScreen />
+          <PageTransitionWrapper>{children}</PageTransitionWrapper>
+        </ThemeProvider>
       </body>
     </html>
   );

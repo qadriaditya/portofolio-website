@@ -72,7 +72,10 @@ const ProjectsDetailPage = () => {
       : projects.filter((p) => p.category === activeCategory);
 
   return (
-    <div className="min-h-screen bg-black py-20 sm:py-28">
+    <div
+      suppressHydrationWarning
+      className="min-h-screen bg-black dark:bg-black bg-white py-20 sm:py-28"
+    >
       {/* Header Section */}
       <div
         ref={headerRef}
@@ -83,10 +86,10 @@ const ProjectsDetailPage = () => {
         }`}
       >
         <div className="text-center mb-8 sm:mb-12">
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold text-white mb-4 sm:mb-6">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold text-white dark:text-white text-gray-900 mb-4 sm:mb-6">
             My Projects
           </h1>
-          <p className="text-white/70 text-base sm:text-lg md:text-xl max-w-3xl mx-auto">
+          <p className="text-white/70 dark:text-white/70 text-gray-600 text-base sm:text-lg md:text-xl max-w-3xl mx-auto">
             A collection of my recent work in web development, UI/UX design, and
             graphic design. Each project represents my passion for creating
             beautiful and functional digital experiences.
@@ -101,8 +104,8 @@ const ProjectsDetailPage = () => {
               onClick={() => setActiveCategory(cat)}
               className={`px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-sm sm:text-base font-medium transition-all duration-300 ${
                 activeCategory === cat
-                  ? "bg-white text-black"
-                  : "bg-white/10 text-white hover:bg-white/20"
+                  ? "bg-white text-black dark:bg-white dark:text-black bg-indigo-600 text-white"
+                  : "bg-white/10 text-white dark:bg-white/10 dark:text-white text-gray-700 dark:hover:bg-white/20 hover:bg-gray-200 bg-gray-200"
               }`}
             >
               {cat}
@@ -124,35 +127,36 @@ const ProjectsDetailPage = () => {
               }`}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
-              <div className="bg-white/5 rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 hover:border-white/30 transition-all duration-300 hover:shadow-2xl hover:shadow-white/10">
+              <div className="bg-white/5 dark:bg-white/5 bg-white dark:border dark:border-white/10 border border-gray-300 rounded-xl sm:rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-2xl dark:hover:shadow-white/10 hover:shadow-gray-400/20 dark:hover:border-white/30 hover:border-gray-400">
                 {/* Project Image */}
-                <div className="relative overflow-hidden aspect-video bg-slate-900">
+                <div className="relative overflow-hidden aspect-video bg-slate-900 dark:bg-slate-900 bg-gray-300">
                   <img
                     src={project.image}
                     alt={project.title}
+                    loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 dark:from-black/60 from-gray-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                   {/* Year Badge */}
-                  <div className="absolute top-4 right-4 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-white text-xs sm:text-sm font-medium">
+                  <div className="absolute top-4 right-4 bg-white/20 dark:bg-white/20 bg-gray-800/40 backdrop-blur-md px-3 py-1 rounded-full text-white dark:text-white text-gray-100 text-xs sm:text-sm font-medium">
                     {project.year}
                   </div>
                 </div>
 
                 {/* Project Info */}
-                <div className="p-5 sm:p-6 lg:p-8">
+                <div className="p-5 sm:p-6 lg:p-8 bg-white dark:bg-gray-900">
                   <div className="mb-2 sm:mb-3">
-                    <span className="text-xs sm:text-sm text-green-400 font-semibold uppercase tracking-wider">
+                    <span className="text-xs sm:text-sm text-green-400 dark:text-green-400 text-white font-semibold uppercase tracking-wider">
                       {project.category}
                     </span>
                   </div>
 
-                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-2 sm:mb-3 group-hover:text-green-400 transition-colors">
+                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white dark:text-white text-white mb-2 sm:mb-3 group-hover:text-green-400 dark:group-hover:text-green-400 group-hover:text-indigo-400 transition-colors">
                     {project.title}
                   </h3>
 
-                  <p className="text-white/70 text-sm sm:text-base mb-4 sm:mb-6 line-clamp-2">
+                  <p className="text-white/70 dark:text-white/70 text-white text-sm sm:text-base mb-4 sm:mb-6 line-clamp-2">
                     {project.description}
                   </p>
 
@@ -161,7 +165,7 @@ const ProjectsDetailPage = () => {
                     {project.tags.map((tag, idx) => (
                       <span
                         key={idx}
-                        className="px-3 py-1 bg-white/10 text-white/80 rounded-full text-xs sm:text-sm"
+                        className="px-3 py-1 bg-white/10 dark:bg-white/10 bg-indigo-500/20 text-white/80 dark:text-white/80 text-white rounded-full text-xs sm:text-sm border dark:border-white/10 border-indigo-500/40"
                       >
                         {tag}
                       </span>
@@ -171,7 +175,7 @@ const ProjectsDetailPage = () => {
                   {/* View Project Button */}
                   <a
                     href={project.link}
-                    className="inline-flex items-center gap-2 text-white hover:text-green-400 transition-colors text-sm sm:text-base font-medium group/btn"
+                    className="inline-flex items-center gap-2 text-white dark:text-white text-white hover:text-green-400 dark:hover:text-green-400 hover:text-indigo-300 transition-colors text-sm sm:text-base font-medium group/btn"
                   >
                     View Project
                     <svg

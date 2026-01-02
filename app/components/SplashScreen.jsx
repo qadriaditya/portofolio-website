@@ -1,9 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { useTheme } from "../context/ThemeContext";
 
 const SplashScreen = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [isAnimatingOut, setIsAnimatingOut] = useState(false);
+  const { isDark, isMounted } = useTheme();
 
   useEffect(() => {
     // Show splash screen for 3 seconds
@@ -22,15 +24,19 @@ const SplashScreen = () => {
 
   return (
     <div
-      className={`fixed inset-0 bg-black z-[99999] flex items-center justify-center transition-opacity duration-600 ${
+      className={`fixed inset-0 z-[99999] flex items-center justify-center transition-opacity duration-600 ${
         isAnimatingOut ? "opacity-0" : "opacity-100"
       }`}
+      style={{
+        background: "var(--background)",
+        color: "var(--foreground)",
+      }}
     >
       {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 via-transparent to-blue-500/10 animate-pulse"></div>
-        <div className="absolute top-0 left-0 w-96 h-96 bg-green-500/20 rounded-full blur-3xl animate-blob"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-blob animation-delay-2000"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-transparent to-purple-500/10 animate-pulse"></div>
+        <div className="absolute top-0 left-0 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl animate-blob"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-blob animation-delay-2000"></div>
       </div>
 
       {/* Content */}
@@ -39,18 +45,20 @@ const SplashScreen = () => {
         <div className="relative">
           {/* Outer Ring */}
           <div
-            className="absolute inset-0 border-2 border-transparent border-t-green-500 border-r-blue-500 rounded-full animate-spin"
+            className="absolute inset-0 border-2 border-transparent rounded-full animate-spin"
             style={{
               width: "120px",
               height: "120px",
               marginLeft: "-60px",
               marginTop: "-60px",
+              borderTopColor: isDark ? "#4f46e5" : "#4f46e5",
+              borderRightColor: isDark ? "#a855f7" : "#9333ea",
             }}
           ></div>
 
           {/* Middle Ring */}
           <div
-            className="absolute inset-0 border-2 border-transparent border-b-green-500 border-l-blue-500 rounded-full animate-spin"
+            className="absolute inset-0 border-2 border-transparent rounded-full animate-spin"
             style={{
               width: "100px",
               height: "100px",
@@ -58,32 +66,56 @@ const SplashScreen = () => {
               marginTop: "-50px",
               animationDirection: "reverse",
               animationDuration: "3s",
+              borderBottomColor: isDark ? "#4f46e5" : "#4f46e5",
+              borderLeftColor: isDark ? "#a855f7" : "#9333ea",
             }}
           ></div>
 
           {/* Logo */}
-          <div className="relative w-24 h-24 rounded-full bg-white flex items-center justify-center animate-bounce">
-            <span className="text-5xl font-bold text-black">A</span>
+          <div
+            className="relative w-24 h-24 rounded-full flex items-center justify-center animate-bounce shadow-lg"
+            style={{
+              background: isDark
+                ? "linear-gradient(to bottom right, #4f46e5, #a855f7)"
+                : "linear-gradient(to bottom right, #4f46e5, #9333ea)",
+              boxShadow: isDark
+                ? "0 20px 25px -5px rgba(79, 70, 229, 0.5)"
+                : "0 20px 25px -5px rgba(79, 70, 229, 0.4)",
+            }}
+          >
+            <span className="text-5xl font-bold text-white">A</span>
           </div>
         </div>
 
         {/* Text Animation */}
         <div className="text-center">
-          <h1 className="text-white text-3xl sm:text-4xl md:text-5xl font-bold mb-4 animate-fade-up">
+          <h1
+            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 animate-fade-up"
+            style={{ color: "var(--foreground)" }}
+          >
             Qadri Aditya
           </h1>
-          <p className="text-white/70 text-sm sm:text-base md:text-lg animate-fade-up animation-delay-300">
+          <p
+            className="text-sm sm:text-base md:text-lg animate-fade-up animation-delay-300"
+            style={{ color: "var(--foreground)" }}
+          >
             Front-end Developer & UI/UX Designer
           </p>
         </div>
 
         {/* Loading Progress */}
-        <div className="w-48 h-1 bg-white/10 rounded-full overflow-hidden">
-          <div className="h-full bg-gradient-to-r from-green-500 to-blue-500 rounded-full animate-progress"></div>
+        <div
+          className="w-48 h-1 rounded-full overflow-hidden"
+          style={{ backgroundColor: "var(--foreground)", opacity: 0.2 }}
+        >
+          <div className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full animate-progress"></div>
         </div>
 
         {/* Loading Text */}
-        <p className="text-white/60 text-xs sm:text-sm tracking-widest uppercase animate-pulse">
+        <p
+          className="text-xs sm:text-sm tracking-widest uppercase animate-pulse"
+          style={{ color: "var(--foreground)", opacity: 0.6 }}
+        >
           Loading...
         </p>
       </div>

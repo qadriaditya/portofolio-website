@@ -43,8 +43,9 @@ const ProjectSection = () => {
 
   return (
     <section
+      suppressHydrationWarning
       id="projects"
-      className="py-20 sm:py-28 md:py-40 bg-black"
+      className="py-20 sm:py-28 md:py-40 bg-black dark:bg-black bg-white"
       ref={sectionRef}
     >
       <div className="max-w-7xl mx-auto px-3 sm:px-6">
@@ -54,12 +55,12 @@ const ProjectSection = () => {
             visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-white mb-3 sm:mb-4">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-white dark:text-white text-gray-900 mb-3 sm:mb-4">
             Work & Projects
           </h2>
           <div className="flex items-center gap-3 sm:gap-4">
-            <div className="h-0.5 w-8 sm:w-12 bg-gradient-to-r from-green-500 to-transparent"></div>
-            <p className="text-green-500 text-xs sm:text-sm font-semibold tracking-widest uppercase">
+            <div className="h-0.5 w-8 sm:w-12 bg-gradient-to-r from-green-500 dark:from-green-500 from-indigo-600 dark:to-transparent to-transparent"></div>
+            <p className="text-green-500 dark:text-green-500 text-indigo-600 text-xs sm:text-sm font-semibold tracking-widest uppercase">
               Graphic Design
             </p>
           </div>
@@ -79,13 +80,13 @@ const ProjectSection = () => {
                 transitionDelay: `${index * 80}ms`,
               }}
             >
-              <div className="relative overflow-hidden rounded-lg sm:rounded-xl aspect-square bg-slate-900">
+              <div className="relative overflow-hidden rounded-lg sm:rounded-xl aspect-square bg-slate-900 dark:bg-slate-900 bg-gray-300 border dark:border-white/10 border-gray-400 shadow-md">
                 <img
                   src={design.image}
                   alt={`Graphic Design ${index + 1}`}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300"></div>
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 dark:group-hover:bg-black/40 group-hover:bg-gray-900/30 transition-colors duration-300"></div>
               </div>
             </div>
           ))}
