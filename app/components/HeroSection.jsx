@@ -89,7 +89,7 @@ const HeroSection = () => {
           }`}
         >
           <p
-            className={`text-white text-xs sm:text-sm md:text-base mb-4 sm:mb-6 tracking-wide uppercase ${
+            className={`text-white text-xs sm:text-sm md:text-base mb-7 sm:mb-6 tracking-wide uppercase ${
               leftRevealed ? "anim-fade-in anim-delay-150" : "opacity-0"
             }`}
           >

@@ -94,7 +94,7 @@ const DeveloperSection = () => {
 
         {/* Developer Projects Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-          {DEVELOPER_PROJECTS.slice(0, 4).map((project, index) => (
+          {DEVELOPER_PROJECTS.slice(0, 3).map((project, index) => (
             <div
               key={index}
               className={`group cursor-pointer transition-all duration-500 ${

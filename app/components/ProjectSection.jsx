@@ -66,7 +66,7 @@ const ProjectSection = () => {
 
         {/* Graphic Design Gallery - Images Only */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-          {GRAPHIC_DESIGNS.slice(0, 4).map((design, index) => (
+          {GRAPHIC_DESIGNS.slice(0, 3).map((design, index) => (
             <div
               key={index}
               className={`group cursor-pointer transition-all duration-500 ${
