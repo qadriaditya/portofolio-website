@@ -1,22 +1,18 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import HeroSection from "./HeroSection";
-import AboutSection from "./AboutSection";
 import ProjectSection from "./ProjectSection";
+import DeveloperSection from "./DeveloperSection";
 import ContactSection from "./ContactSection";
 import Footer from "./Footer";
 
-export default function MainContentClient({
-  showAbout,
-  onToggleAbout,
-  setShowAbout,
-}) {
+export default function MainContentClient() {
   return (
     <main className="flex min-h-screen flex-col bg-black">
-      <div className="container mx-auto px-6 py-8">
-        <HeroSection onScrollDown={onToggleAbout} isAboutOpen={showAbout} />
-        {showAbout && <AboutSection onClose={() => setShowAbout(false)} />}
+      <div className="container mx-auto px-3 sm:px-6 py-8 sm:py-12">
+        <HeroSection />
         <ProjectSection />
+        <DeveloperSection />
         <ContactSection />
       </div>
       <Footer />
