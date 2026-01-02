@@ -5,9 +5,10 @@ import NavLink from "./NavLink";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 
 const navLinks = [
-  { title: "Home", path: "#home" },
-  { title: "Projects", path: "#projects" },
-  { title: "Contact", path: "#contact" },
+  { title: "Home", path: "/" },
+  { title: "Projects", path: "/projects" },
+  { title: "About Me", path: "/about" },
+  { title: "Contact", path: "/contact" },
 ];
 
 const Navbar = () => {
@@ -21,8 +22,8 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="sticky top-0 z-50 px-2 sm:px-4 py-4 sm:py-6">
-      <div className="w-full md:max-w-xl mx-auto bg-white md:backdrop-blur-sm md:rounded-full md:shadow-xl px-0">
+    <nav className="sticky top-0 z-50 px-2 sm:px-4 py-4 sm:py-6 bg-black">
+      <div className="w-full md:max-w-xl mx-auto bg-white/5 md:bg-white/15 md:backdrop-blur-md md:rounded-full md:shadow-xl px-0 border border-white/10">
         <div className="flex items-center justify-between px-3 sm:px-4 md:px-8 py-2 md:py-3">
           {/* Left Menu */}
           <div className="hidden md:flex items-center space-x-8">
@@ -30,7 +31,7 @@ const Navbar = () => {
               <Link
                 key={index}
                 href={link.path}
-                className="text-black/70 hover:text-green-800 transition-colors text-base"
+                className="text-white/80 hover:text-white transition-colors text-base font-medium"
               >
                 {link.title}
               </Link>
@@ -40,9 +41,9 @@ const Navbar = () => {
           {/* Center Logo */}
           <Link
             href={"/"}
-            className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 bg-black rounded-full text-white font-bold text-sm sm:text-lg"
+            className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 bg-white rounded-full text-black font-bold text-sm sm:text-lg"
           >
-            <span className="text-white">A</span>
+            <span className="text-black">A</span>
           </Link>
 
           {/* Right Menu */}
@@ -51,7 +52,7 @@ const Navbar = () => {
               <Link
                 key={index}
                 href={link.path}
-                className="text-black/70 hover:text-green-800 transition-colors text-base"
+                className="text-white/80 hover:text-white transition-colors text-base font-medium"
               >
                 {link.title}
               </Link>
@@ -62,7 +63,7 @@ const Navbar = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="flex items-center px-2 sm:px-3 py-2 text-black"
+              className="flex items-center px-2 sm:px-3 py-2 text-white"
               aria-label={isOpen ? "Close menu" : "Open menu"}
             >
               {isOpen ? (
@@ -83,7 +84,7 @@ const Navbar = () => {
                   key={index}
                   href={link.path}
                   onClick={() => setIsOpen(false)}
-                  className="text-black hover:text-green-800 border-b-green-800 transition-colors text-sm font-medium"
+                  className="text-white hover:text-white/60 transition-colors text-sm font-medium"
                 >
                   {link.title}
                 </Link>

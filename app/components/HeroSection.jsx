@@ -50,20 +50,17 @@ const HeroSection = () => {
       className="relative flex flex-col items-center justify-center min-h-screen sm:min-h-[90vh] scroll-mt-16 overflow-visible px-3 sm:px-6 pt-6 sm:pt-8 pb-20 sm:pb-28 md:pb-40"
     >
       <div className="absolute top-8 sm:top-12 left-4 sm:left-6 w-8 sm:w-12 h-8 sm:h-12 bg-[var(--primary-200)] rounded-full blur-3xl opacity-20 animate-pulse pointer-events-none" />
-
       {/* Plain background (image/video removed) */}
       <div className="absolute inset-0 z-0 bg-black" aria-hidden="true" />
-
       {/* subtle overlay so text stays readable */}
       <div
-        className="absolute inset-0 bg-black/40 z-[5] pointer-events-none"
+        className="absolute inset-0 bg-black/30 z-[5] pointer-events-none"
         aria-hidden="true"
       />
-
       {/* Side fades so video edges blend into black background */}
       {/* Top fade so the top of the video blends into the black background */}
       <div
-        className="absolute top-0 left-0 right-0 h-16 sm:h-24 md:h-36 bg-gradient-to-b from-black to-transparent z-[5] pointer-events-none"
+        className="absolute top-0 left-0 right-0 h-12 sm:h-16 md:h-20 bg-black z-[5] pointer-events-none"
         aria-hidden="true"
       />
       <div
@@ -74,26 +71,25 @@ const HeroSection = () => {
         className="block absolute inset-y-0 right-0 w-20 sm:w-40 md:w-48 lg:w-56 bg-gradient-to-l from-black/80 to-transparent z-[5] pointer-events-none"
         aria-hidden="true"
       />
-
       {/* Bottom fade */}
       <div
         className="absolute bottom-0 left-0 right-0 h-24 sm:h-40 md:h-56 bg-gradient-to-b from-transparent to-black pointer-events-none z-[5]"
         aria-hidden="true"
       />
-
-      <div className="w-full max-w-4xl mx-auto z-10 mt-20 sm:mt-24 md:mt-48">
+      s
+      <div className="w-full max-w-4xl lg:max-w-3xl xl:max-w-2xl 2xl:max-w-3xl mx-auto z-10 mt-20 sm:mt-24 md:mt-32 lg:mt-40 xl:mt-36">
         <div
           ref={leftRef}
-          className={`flex flex-col items-center text-center px-2 sm:px-4 transition-all duration-700 ${
+          className={`flex flex-col items-center text-center px-2 sm:px-4 lg:px-2 transition-all duration-700 ${
             leftRevealed ? "anim-slide-up" : "opacity-0 translate-y-6"
           }`}
         >
           <p
-            className={`text-white text-xs sm:text-sm md:text-base mb-7 sm:mb-6 tracking-wide uppercase ${
+            className={`text-white text-xs sm:text-sm md:text-base lg:text-sm mb-7 sm:mb-6 lg:mb-5 tracking-wide uppercase ${
               leftRevealed ? "anim-fade-in anim-delay-150" : "opacity-0"
             }`}
           >
-            Let’s build something amazing together
+            Let's build something amazing together
           </p>
 
           <h1 className="text-white text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
@@ -112,6 +108,8 @@ const HeroSection = () => {
                   1000,
                   "UI/UX Designer",
                   1000,
+                  "Graphic Designer",
+                  1000,
                 ]}
                 wrapper="span"
                 speed={50}
@@ -121,7 +119,7 @@ const HeroSection = () => {
           </h1>
 
           <p
-            className={`text-white/80 text-sm sm:text-base md:text-lg mb-6 sm:mb-8 mt-4 sm:mt-6 lg:text-xl max-w-2xl ${
+            className={`text-white/80 text-sm sm:text-base md:text-lg lg:text-base mb-4 sm:mb-8 lg:mb-5 mt-4 sm:mt-6 lg:mt-4 max-w-2xl lg:max-w-xl ${
               leftRevealed ? "anim-fade-in anim-delay-300" : "opacity-0"
             }`}
           >
@@ -130,7 +128,7 @@ const HeroSection = () => {
           </p>
 
           <div
-            className={`flex flex-col sm:flex-row gap-4 sm:gap-5 justify-center w-full sm:w-auto mt-4 sm:mt-6 ${
+            className={`flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-4 justify-center w-full sm:w-auto mt-4 sm:mt-6 lg:mt-4 mb-7${
               leftRevealed ? "anim-fade-in anim-delay-400" : "opacity-0"
             }`}
           >
@@ -146,41 +144,40 @@ const HeroSection = () => {
               href="#projects"
               className="w-full sm:w-auto px-4 sm:px-6 py-2 rounded-full border border-white/30 text-white font-semibold hover:bg-white/5 transition-all flex items-center gap-2 justify-center text-sm sm:text-base"
             >
-              <ArrowDownCircleIcon className="h-4 sm:h-5 w-4 sm:w-5 text-white" />
+              <ArrowDownCircleIcon className="h-4 sm:h-5 w-4 sm:w-5 text-white " />
               See My Work
             </a>
           </div>
         </div>
       </div>
-
       {/* === Services / Offerings carousel (under Hero) === */}
       <div
         ref={underRef}
-        className={`w-full mt-24 sm:mt-32 md:mt-40 z-10 transition-all duration-700 ${
+        className={`w-full mt-24 sm:mt-32 md:mt-28 lg:mt-24 xl:mt-20 z-10 transition-all duration-700 ${
           underRevealed
             ? "opacity-100 translate-y-0"
             : "opacity-0 translate-y-6"
         }`}
       >
         <div className="w-full">
-          <div className="max-w-7xl mx-auto px-6">
+          <div className="max-w-7xl lg:max-w-5xl xl:max-w-4xl mx-auto px-6 lg:px-4">
             <div
-              className={`text-center mb-6 transition-all duration-500 ${
+              className={`text-center mb-4 lg:mb-4 transition-all duration-500 ${
                 underRevealed
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-3"
               }`}
             >
-              <p className="text-xs sm:text-sm text-white/60 uppercase tracking-wider">
+              <p className="text-xs sm:text-sm lg:text-xs text-white/60 uppercase tracking-wider">
                 What Do I Offer
               </p>
-              <h3 className="text-white text-xl sm:text-2xl md:text-3xl font-extrabold mt-3">
+              <h3 className="text-white text-xl sm:text-2xl md:text-3xl lg:text-2xl xl:text-2xl font-extrabold mt-2 lg:mt-2">
                 Creates Professional Design That's
                 <br className="hidden sm:block" /> Oriented Towards Client Needs
               </h3>
 
               {/* purple progress pill (hidden on small screens for simplicity) */}
-              <div className="hidden sm:flex justify-center mt-2 sm:mt-4">
+              <div className="hidden sm:flex justify-center mt-2 lg:mt-2">
                 <div className="h-1 sm:h-1.5 w-32 sm:w-48 bg-white/10 rounded-full relative">
                   <div className="absolute left-1/2 -translate-x-1/2 top-0 -mt-0.5 sm:-mt-1 bg-white h-1 sm:h-1.5 w-16 sm:w-24 rounded-full shadow-lg" />
                 </div>
@@ -211,8 +208,8 @@ const HeroSection = () => {
                                 : "opacity-0 scale-50 z-0 pointer-events-none"
                             }`}
                           >
-                            <div className="rounded-xl p-6 sm:p-8 md:p-10 flex flex-col items-center gap-4 sm:gap-5 bg-white/10 shadow-2xl border border-white/20 transition-all duration-700">
-                              <div className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-lg flex items-center justify-center bg-black/80 transition-all duration-700">
+                            <div className="rounded-xl p-6 sm:p-8 md:p-8 lg:p-7 flex flex-col items-center gap-4 sm:gap-5 lg:gap-4 bg-white/10 shadow-2xl border border-white/20 transition-all duration-700">
+                              <div className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-40 lg:h-40 xl:w-44 xl:h-44 rounded-lg flex items-center justify-center bg-black/80 transition-all duration-700">
                                 {/* simple icon variants */}
                                 {it.icon === "content" && (
                                   <svg
@@ -294,7 +291,7 @@ const HeroSection = () => {
                                   </svg>
                                 )}
                               </div>
-                              <div className="text-white font-semibold text-center text-sm sm:text-base md:text-lg transition-all duration-700">
+                              <div className="text-white font-semibold text-center text-sm sm:text-base md:text-lg lg:text-sm transition-all duration-700">
                                 {it.title}
                               </div>
                             </div>
@@ -308,7 +305,7 @@ const HeroSection = () => {
 
               {/* Controls: left/right arrows and pagination dots */}
               <div
-                className={`mt-4 sm:mt-6 flex items-center justify-center gap-3 sm:gap-6 transition-all duration-500 ${
+                className={`mt-4 sm:mt-6 lg:mt-4 flex items-center justify-center gap-3 sm:gap-6 lg:gap-4 transition-all duration-500 ${
                   underRevealed
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-3"

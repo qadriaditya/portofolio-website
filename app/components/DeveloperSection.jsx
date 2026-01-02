@@ -108,7 +108,7 @@ const DeveloperSection = () => {
             >
               <a
                 href={project.link}
-                className="block rounded-lg sm:rounded-xl bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800 group-hover:border-blue-500/50 transition-all duration-300 h-full hover:shadow-xl hover:shadow-blue-500/10 overflow-hidden flex flex-col"
+                className="rounded-lg sm:rounded-xl bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800 group-hover:border-blue-500/50 transition-all duration-300 h-full hover:shadow-xl hover:shadow-blue-500/10 overflow-hidden flex flex-col"
               >
                 {/* Image */}
                 <div className="relative overflow-hidden w-full h-40 sm:h-48 md:h-52 bg-slate-800">
