@@ -48,12 +48,12 @@ const HeroSection = () => {
     <section
       id="home"
       suppressHydrationWarning
-      className="relative min-h-screen bg-black dark:bg-black bg-white overflow-hidden py-20 sm:py-28"
+      className="relative min-h-screen bg-black dark:bg-black overflow-hidden py-20 sm:py-28"
     >
       {/* Background Elements */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-green-500/10 dark:bg-green-500/10 bg-indigo-400/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-72 h-72 bg-blue-500/10 dark:bg-blue-500/10 bg-blue-400/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 left-10 w-72 h-72 bg-indigo-400/10 dark:bg-indigo-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-72 h-72 bg-blue-400/10 dark:bg-blue-500/10 rounded-full blur-3xl"></div>
       </div>
 
       {/* Main Content */}
@@ -77,7 +77,7 @@ const HeroSection = () => {
 
             {/* Main Title */}
             <div className="mb-6 sm:mb-8">
-              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-white dark:text-white text-white leading-tight mb-4">
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-white dark:text-white leading-tight mb-4">
                 I'm{" "}
                 <span className="bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent">
                   <TypeAnimation
@@ -100,7 +100,7 @@ const HeroSection = () => {
             </div>
 
             {/* Description */}
-            <p className="text-white/70 dark:text-white/70 text-white text-lg sm:text-xl leading-relaxed mb-8 max-w-2xl mx-auto">
+            <p className="text-white/70 dark:text-white/70 text-lg sm:text-xl leading-relaxed mb-8 max-w-2xl mx-auto">
               Passionate frontend developer and UI/UX designer creating
               beautiful, functional digital experiences. Let's build something
               amazing together.
@@ -110,14 +110,14 @@ const HeroSection = () => {
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
               <a
                 href="#projects"
-                className="px-8 py-4 bg-white dark:bg-white bg-indigo-600 text-black dark:text-black text-white font-semibold rounded-lg hover:bg-white/90 dark:hover:bg-white/90 hover:bg-indigo-700 transition-all duration-300 hover:scale-105 active:scale-95 flex items-center justify-center gap-2"
+                className="px-8 py-4 bg-indigo-600 dark:bg-indigo-600 text-white dark:text-white font-semibold rounded-lg hover:bg-indigo-700 dark:hover:bg-indigo-700 transition-all duration-300 hover:scale-105 active:scale-95 flex items-center justify-center gap-2"
               >
                 Explore My Work
                 <ArrowDownCircleIcon className="w-5 h-5" />
               </a>
               <a
                 href="/contact"
-                className="px-8 py-4 border-2 border-white/30 dark:border-white/30 border-gray-400 text-white dark:text-white text-gray-900 font-semibold rounded-lg hover:border-white/60 dark:hover:border-white/60 hover:border-gray-600 hover:bg-white/5 dark:hover:bg-white/5 hover:bg-gray-200/10 transition-all duration-300"
+                className="px-8 py-4 border-2 border-white/30 dark:border-white/30 text-white dark:text-white font-semibold rounded-lg hover:border-white/60 dark:hover:border-white/60 hover:bg-white/5 dark:hover:bg-white/5 transition-all duration-300"
               >
                 Get in Touch
               </a>
@@ -126,26 +126,26 @@ const HeroSection = () => {
             {/* Stats */}
             <div className="flex flex-col sm:flex-row flex-wrap gap-8 sm:gap-12 mt-12 sm:mt-16 justify-center">
               <div>
-                <div className="text-3xl sm:text-4xl font-bold text-white dark:text-white text-white mb-2">
+                <div className="text-3xl sm:text-4xl font-bold text-white dark:text-white mb-2">
                   15+
                 </div>
-                <p className="text-white/60 dark:text-white/60 text-white text-sm">
+                <p className="text-white/60 dark:text-white/60 text-sm">
                   Projects Completed
                 </p>
               </div>
               <div>
-                <div className="text-3xl sm:text-4xl font-bold text-white dark:text-white text-white mb-2">
+                <div className="text-3xl sm:text-4xl font-bold text-white dark:text-white mb-2">
                   3+
                 </div>
-                <p className="text-white/60 dark:text-white/60 text-white text-sm">
+                <p className="text-white/60 dark:text-white/60 text-sm">
                   Years Experience
                 </p>
               </div>
               <div>
-                <div className="text-3xl sm:text-4xl font-bold text-white dark:text-white text-white mb-2">
+                <div className="text-3xl sm:text-4xl font-bold text-white dark:text-white mb-2">
                   10+
                 </div>
-                <p className="text-white/60 dark:text-white/60 text-white text-sm">
+                <p className="text-white/60 dark:text-white/60 text-sm">
                   Happy Clients
                 </p>
               </div>
