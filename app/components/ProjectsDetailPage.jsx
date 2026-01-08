@@ -31,7 +31,7 @@ const projects = [
     category: "Web Design",
     description:
       "Modern static website with smooth animations and responsive design.",
-    image: "/images/ProjectCard/kedaiAroma.png",
+    image: "/images/ProjectCard/KedaiAroma.png",
     tags: ["Static Web Design", "HTML", "Responsive", "CSS", "JavaScript"],
     link: "#",
     year: "2025",
@@ -202,7 +202,7 @@ const ProjectsDetailPage = () => {
         <div className="mt-16 sm:mt-24 grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
           <div className="text-center p-6 bg-white/5 rounded-xl border border-white/10">
             <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-2">
-              15+
+              2+
             </div>
             <div className="text-white/60 text-sm sm:text-base">
               Projects Completed
@@ -210,7 +210,7 @@ const ProjectsDetailPage = () => {
           </div>
           <div className="text-center p-6 bg-white/5 rounded-xl border border-white/10">
             <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-2">
-              10+
+              2+
             </div>
             <div className="text-white/60 text-sm sm:text-base">
               Happy Clients
@@ -218,10 +218,10 @@ const ProjectsDetailPage = () => {
           </div>
           <div className="text-center p-6 bg-white/5 rounded-xl border border-white/10">
             <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-2">
-              3+
+              5+
             </div>
             <div className="text-white/60 text-sm sm:text-base">
-              Years Experience
+              Month Experience
             </div>
           </div>
           <div className="text-center p-6 bg-white/5 rounded-xl border border-white/10">
