@@ -82,7 +82,7 @@ const HeroSection = () => {
                 <span className="bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent">
                   <TypeAnimation
                     sequence={[
-                      "Aditya",
+                      "Adit",
                       2000,
                       "a Developer",
                       2000,
@@ -127,26 +127,10 @@ const HeroSection = () => {
             <div className="flex flex-col sm:flex-row flex-wrap gap-8 sm:gap-12 mt-12 sm:mt-16 justify-center">
               <div>
                 <div className="text-3xl sm:text-4xl font-bold text-white dark:text-white mb-2">
-                  15+
+                  2
                 </div>
                 <p className="text-white/60 dark:text-white/60 text-sm">
                   Projects Completed
-                </p>
-              </div>
-              <div>
-                <div className="text-3xl sm:text-4xl font-bold text-white dark:text-white mb-2">
-                  3+
-                </div>
-                <p className="text-white/60 dark:text-white/60 text-sm">
-                  Years Experience
-                </p>
-              </div>
-              <div>
-                <div className="text-3xl sm:text-4xl font-bold text-white dark:text-white mb-2">
-                  10+
-                </div>
-                <p className="text-white/60 dark:text-white/60 text-sm">
-                  Happy Clients
                 </p>
               </div>
             </div>
