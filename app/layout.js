@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import PageTransitionWrapper from "./components/PageTransitionWrapper";
 import SplashScreen from "./components/SplashScreen";
+import BackgroundMusic from "./components/BackgroundMusic";
 import { ThemeProvider } from "./context/ThemeContext";
 
 const geistSans = Geist({
@@ -40,6 +41,7 @@ export default function RootLayout({ children }) {
       >
         <ThemeProvider>
           <SplashScreen />
+          <BackgroundMusic />
           <PageTransitionWrapper>{children}</PageTransitionWrapper>
         </ThemeProvider>
       </body>
