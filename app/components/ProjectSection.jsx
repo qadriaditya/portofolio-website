@@ -54,94 +54,213 @@ const ALL_PROJECTS = [
   },
 ];
 
-const ProjectCard = ({ project, visible, index }) => {
+const ProjectCard = ({ project, visible, index, isFeatured }) => {
+  if (isFeatured) {
+    // Featured card with image-only and hover overlay
+    return (
+      <div
+        className={`group transition-all duration-500 ${
+          visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        } sm:col-span-2 row-span-2`}
+        style={{
+          transitionDelay: `${index * 100}ms`,
+        }}
+      >
+        <div
+          className="relative overflow-hidden rounded-2xl border border-white/10 shadow-2xl hover:shadow-2xl hover:shadow-indigo-500/30 transition-all duration-300 h-full group/card bg-black"
+          style={{ height: "clamp(220px, 50vw, 600px)" }}
+        >
+          {/* Image Container - Full Height */}
+          <div className="relative w-full h-full overflow-hidden">
+            <img
+              src={project.image}
+              alt={project.title}
+              className="w-full h-full object-cover group-hover/card:scale-110 transition-transform duration-700"
+            />
+
+            {/* Featured Badge - Always Visible */}
+            <div className="absolute top-4 left-4 px-3 py-1 bg-indigo-600 text-white text-xs font-semibold rounded-full backdrop-blur-md opacity-100 group-hover/card:opacity-0 transition-opacity duration-300 z-10">
+              ⭐ Featured
+            </div>
+
+            {/* Overlay on Hover */}
+            <div className="absolute inset-0 bg-black/0 group-hover/card:bg-black/90 transition-all duration-300 flex flex-col justify-between p-6 sm:p-8 opacity-0 group-hover/card:opacity-100">
+              <div>
+                <div className="flex items-start gap-3 mb-4">
+                  <span className="text-indigo-400 text-3xl font-bold uppercase tracking-widest">
+                    {project.category ||
+                      (project.id === 1 || project.id === 2
+                        ? "Web Development"
+                        : project.id === 3
+                        ? "Web Design"
+                        : "Graphic Design")}
+                  </span>
+                </div>
+
+                <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3">
+                  {project.title}
+                </h3>
+
+                <p className="text-white/90 text-sm sm:text-base mb-4 leading-relaxed">
+                  {project.description}
+                </p>
+
+                <div className="space-y-2 mb-6">
+                  <p className="text-indigo-300 text-sm font-semibold">
+                    Role: {project.role}
+                  </p>
+                  <p className="text-green-400 text-sm font-semibold">
+                    ✓ {project.outcome}
+                  </p>
+                </div>
+
+                {/* Tech Stack */}
+                <div className="flex flex-wrap gap-2">
+                  {project.techStack.slice(0, 4).map((tech, idx) => (
+                    <span
+                      key={idx}
+                      className="text-xs px-3 py-1 bg-indigo-600/30 text-indigo-300 rounded-full border border-indigo-500/50 font-medium"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                  {project.techStack.length > 4 && (
+                    <span className="text-xs px-3 py-1 bg-white/10 text-white/70 rounded-full border border-white/20">
+                      +{project.techStack.length - 4}
+                    </span>
+                  )}
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex gap-3">
+                <a
+                  href={project.liveLink}
+                  className="flex-1 px-4 py-3 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold rounded-lg transition-colors duration-300 flex items-center justify-center gap-2"
+                >
+                  <EyeIcon className="w-4 h-4" />
+                  View
+                </a>
+                <a
+                  href={project.githubLink}
+                  className="flex-1 px-4 py-3 border border-white/40 hover:border-indigo-400 hover:bg-indigo-500/10 text-white text-sm font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2"
+                >
+                  <CodeBracketIcon className="w-4 h-4" />
+                  Code
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Regular card with content always visible
   return (
     <div
       className={`group transition-all duration-500 ${
         visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-      }`}
+      } flex flex-col`}
       style={{
         transitionDelay: `${index * 100}ms`,
       }}
     >
-      <div className="relative overflow-hidden rounded-lg sm:rounded-xl bg-slate-900 dark:bg-slate-900 border dark:border-white/10 border-gray-400 shadow-md hover:shadow-xl transition-shadow duration-300">
+      <div
+        className="relative overflow-hidden rounded-2xl border border-white/10 shadow-2xl hover:shadow-2xl hover:shadow-indigo-500/30 transition-all duration-300 h-full group/card bg-slate-900 flex flex-col"
+        style={{ height: "clamp(220px, 50vw, 600px)" }}
+      >
         {/* Image Container */}
-        <div className="relative overflow-hidden aspect-square">
+        <div
+          className="relative overflow-hidden flex-shrink-0"
+          style={{ height: "clamp(130px, 30vw, 350px)" }}
+        >
           <img
             src={project.image}
             alt={project.title}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            className="w-full h-full object-cover group-hover/card:scale-110 transition-transform duration-700"
           />
-          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/150 dark:group-hover:bg-black/80 transition-colors duration-300"></div>
-
-          {/* Overlay Details */}
-          <div className="absolute inset-0 flex flex-col justify-between p-4 sm:p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <div>
-              <h3 className="text-lg sm:text-xl font-bold text-white mb-2">
-                {project.title}
-              </h3>
-              <p className="text-white/80 text-xs sm:text-sm leading-relaxed mb-3">
-                {project.description}
-              </p>
-              <div className="mb-3">
-                <p className="text-indigo-300 text-xs sm:text-sm font-semibold mb-2">
-                  Role: {project.role}
-                </p>
-                <p className="text-white/70 text-xs mb-2">
-                  <span className="font-semibold">Tech:</span>{" "}
-                  {project.techStack.join(", ")}
-                </p>
-                <p className="text-green-400 text-xs font-semibold">
-                  Outcome: {project.outcome}
-                </p>
-              </div>
-            </div>
-
-            {/* Action Buttons */}
-            <div className="flex gap-2 sm:gap-3">
-              <a
-                href={project.liveLink}
-                className="flex-1 px-3 py-2 sm:py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white text-xs sm:text-sm font-semibold rounded-lg transition-colors duration-300 flex items-center justify-center gap-2"
-              >
-                <EyeIcon className="w-4 h-4" />
-                View
-              </a>
-              <a
-                href={project.githubLink}
-                className="flex-1 px-3 py-2 sm:py-2.5 border border-white/30 hover:border-white/60 hover:bg-white/5 text-white text-xs sm:text-sm font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2"
-              >
-                <CodeBracketIcon className="w-4 h-4" />
-                Details
-              </a>
-            </div>
-          </div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-300"></div>
         </div>
 
-        {/* Card Header (visible by default) */}
-        <div className="p-4 sm:p-5 bg-black/40">
-          <h3 className="text-base sm:text-lg font-bold text-white mb-1">
-            {project.title}
-          </h3>
-          <div className="flex flex-wrap gap-1 mb-3">
-            {project.techStack.slice(0, 2).map((tech, idx) => (
-              <span
-                key={idx}
-                className="text-xs px-2 py-1 bg-indigo-600/40 text-indigo-200 rounded"
-              >
-                {tech}
+        {/* Content */}
+        <div className="p-4 flex-1 flex flex-col justify-between">
+          <div>
+            <div className="hidden md:flex items-start gap-2 mb-2">
+              <span className="text-indigo-400 text-xs font-bold uppercase tracking-widest">
+                {project.category ||
+                  (project.id === 1 || project.id === 2
+                    ? "Web Development"
+                    : project.id === 3
+                    ? "Web Design"
+                    : "Graphic Design")}
               </span>
-            ))}
-            {project.techStack.length > 2 && (
-              <span className="text-xs px-2 py-1 bg-white/10 text-white/60 rounded">
-                +{project.techStack.length - 2} more
-              </span>
-            )}
+            </div>
+
+            <h3 className="text-center md:text-left text-base md:text-lg font-bold text-white mb-0 md:mb-2 group-hover/card:text-indigo-300 transition-colors">
+              {project.title}
+            </h3>
+
+            <p className="hidden md:block text-white/70 text-xs mb-3 line-clamp-2">
+              {project.description}
+            </p>
+
+            {/* Role & Outcome - Compact */}
+            <div className="hidden md:block text-xs space-y-0.5 mb-2">
+              <p className="text-indigo-300 font-semibold text-xs">
+                {project.role}
+              </p>
+              <p className="text-green-400 font-semibold text-xs">
+                ✓ {project.outcome}
+              </p>
+            </div>
+
+            {/* Tech Stack */}
+            <div className="hidden md:flex flex-wrap gap-1">
+              {project.techStack.slice(0, 2).map((tech, idx) => (
+                <span
+                  key={idx}
+                  className="text-xs px-2 py-0.5 bg-indigo-600/20 text-indigo-300 rounded-full border border-indigo-500/40 font-medium"
+                >
+                  {tech}
+                </span>
+              ))}
+              {project.techStack.length > 2 && (
+                <span className="text-xs px-2 py-0.5 bg-white/5 text-white/60 rounded-full border border-white/10">
+                  +{project.techStack.length - 2}
+                </span>
+              )}
+            </div>
           </div>
-          <p className="text-white/60 text-xs sm:text-sm line-clamp-2">
-            {project.description}
-          </p>
+
+          {/* Desktop Buttons Only */}
+          <div className="hidden md:flex gap-2 mt-3">
+            <a
+              href={project.liveLink}
+              className="flex-1 px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold rounded-lg transition-colors duration-300 flex items-center justify-center gap-1"
+            >
+              <EyeIcon className="w-3 h-3" />
+              <span>View</span>
+            </a>
+            <a
+              href={project.githubLink}
+              className="flex-1 px-3 py-1.5 border border-white/30 hover:border-indigo-500 hover:bg-indigo-500/10 text-white text-xs font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-1"
+            >
+              <CodeBracketIcon className="w-3 h-3" />
+              <span>Code</span>
+            </a>
+          </div>
         </div>
       </div>
+
+      {/* Mobile View Button - Outside Card */}
+      <a
+        href={project.liveLink}
+        className="md:hidden mt-3 w-full px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold rounded-lg transition-colors duration-300 flex items-center justify-center gap-2"
+      >
+        <EyeIcon className="w-4 h-4" />
+        <span>View Project</span>
+      </a>
     </div>
   );
 };
@@ -208,7 +327,7 @@ const ProjectSection = () => {
     <section
       suppressHydrationWarning
       id="projects"
-      className="py-20 sm:py-28 md:py-40 bg-black dark:bg-black"
+      className="py-20 sm:py-28 md:py-40 bg-black"
       ref={sectionRef}
     >
       <div className="max-w-7xl mx-auto px-3 sm:px-6">
@@ -218,7 +337,7 @@ const ProjectSection = () => {
             visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-white dark:text-white mb-3 sm:mb-4">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-white mb-3 sm:mb-4">
             Featured Projects
           </h2>
           <div className="flex items-center gap-3 sm:gap-4">
@@ -233,16 +352,35 @@ const ProjectSection = () => {
           </p>
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10">
-          {displayProjects.map((project, index) => (
-            <ProjectCard
-              key={project.id}
-              project={project}
-              visible={visible}
-              index={index}
-            />
-          ))}
+        {/* Projects Grid - Featured Layout */}
+        <div
+          className="grid grid-cols-2 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-10"
+          style={{
+            gridTemplateColumns: "repeat(2, 1fr)",
+            gridTemplateRows: "auto auto",
+          }}
+        >
+          {displayProjects.map((project, index) => {
+            let gridClass = "";
+            if (index === 0) {
+              // Featured project spans full width
+              gridClass = "col-span-2";
+            } else if (index === 1 || index === 2) {
+              // Projects 2 and 3 each take 1 column
+              gridClass = "col-span-1";
+            }
+
+            return (
+              <div key={project.id} className={gridClass}>
+                <ProjectCard
+                  project={project}
+                  visible={visible}
+                  index={index}
+                  isFeatured={index === 0}
+                />
+              </div>
+            );
+          })}
         </div>
 
         {/* CTA Section */}

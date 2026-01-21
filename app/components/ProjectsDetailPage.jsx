@@ -77,8 +77,6 @@ const ProjectsDetailPage = () => {
   const [activeCategory, setActiveCategory] = useState("All");
   const [activeSubcategory, setActiveSubcategory] =
     useState("All Graphic Design");
-  const [featuredProjects, setFeaturedProjects] = useState([]);
-  const [isLoaded, setIsLoaded] = useState(false);
 
   const { ref: headerRef, revealed: headerRevealed } = useReveal({
     threshold: 0.1,
@@ -86,44 +84,6 @@ const ProjectsDetailPage = () => {
   const { ref: projectsRef, revealed: projectsRevealed } = useReveal({
     threshold: 0.05,
   });
-
-  // Load featured projects from localStorage on mount
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const saved = localStorage.getItem("featuredProjects");
-      if (saved) {
-        try {
-          setFeaturedProjects(JSON.parse(saved));
-        } catch {
-          // Jika parse error, gunakan default
-          setFeaturedProjects(
-            projects.filter((p) => p.featured).map((p) => p.id)
-          );
-        }
-      } else {
-        // First time - gunakan default dari featured property
-        setFeaturedProjects(
-          projects.filter((p) => p.featured).map((p) => p.id)
-        );
-      }
-      setIsLoaded(true);
-    }
-  }, []);
-
-  const toggleFeatured = (projectId) => {
-    setFeaturedProjects((prev) => {
-      const updated = prev.includes(projectId)
-        ? prev.filter((id) => id !== projectId)
-        : [...prev, projectId];
-
-      // Save to localStorage
-      if (typeof window !== "undefined") {
-        localStorage.setItem("featuredProjects", JSON.stringify(updated));
-      }
-
-      return updated;
-    });
-  };
 
   const filteredProjects =
     activeCategory === "All"
@@ -141,7 +101,7 @@ const ProjectsDetailPage = () => {
   return (
     <div
       suppressHydrationWarning
-      className="min-h-screen bg-slate-950 py-20 sm:py-28"
+      className="min-h-screen bg-black py-20 sm:py-28"
     >
       {/* Header Section */}
       <div
@@ -174,8 +134,8 @@ const ProjectsDetailPage = () => {
               }}
               className={`px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-sm sm:text-base font-medium transition-all duration-300 ${
                 activeCategory === cat
-                  ? "bg-indigo-600 text-white dark:bg-indigo-600 dark:text-white"
-                  : "bg-white/10 text-white/70 hover:bg-white/20 hover:text-white dark:bg-white/10 dark:text-white/70 dark:hover:bg-white/20 dark:hover:text-white"
+                  ? "bg-indigo-600 text-white"
+                  : "bg-white/10 text-white/70 hover:bg-white/20 hover:text-white"
               }`}
             >
               {cat}
@@ -192,8 +152,8 @@ const ProjectsDetailPage = () => {
                 onClick={() => setActiveSubcategory(subcat)}
                 className={`px-3 sm:px-5 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 ${
                   activeSubcategory === subcat
-                    ? "bg-indigo-600 text-white dark:bg-indigo-600 dark:text-white"
-                    : "bg-white/5 text-white/70 dark:bg-white/5 dark:text-white/70 hover:bg-white/10 dark:hover:bg-white/10"
+                    ? "bg-indigo-600 text-white"
+                    : "bg-white/5 text-white/70 hover:bg-white/10"
                 }`}
               >
                 {subcat}
@@ -216,7 +176,7 @@ const ProjectsDetailPage = () => {
               }`}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
-              <div className="bg-slate-900 dark:bg-slate-900 border border-white/10 dark:border-white/10 rounded-xl sm:rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-2xl dark:hover:shadow-indigo-500/20 dark:hover:border-indigo-500/30">
+              <div className="bg-slate-900 border border-white/10 rounded-xl sm:rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-indigo-500/20 hover:border-indigo-500/30">
                 {/* Project Image */}
                 <div className="relative overflow-hidden aspect-video bg-slate-800">
                   <img
@@ -261,7 +221,7 @@ const ProjectsDetailPage = () => {
                     ))}
                   </div>
 
-                  {/* View Project & Featured Button */}
+                  {/* View Project */}
                   <div className="flex items-center justify-between">
                     <a
                       href={project.link}
@@ -282,32 +242,6 @@ const ProjectsDetailPage = () => {
                         />
                       </svg>
                     </a>
-                    <button
-                      onClick={() => toggleFeatured(project.id)}
-                      className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 flex items-center gap-1 ${
-                        featuredProjects.includes(project.id)
-                          ? "bg-yellow-500/30 text-yellow-300 border border-yellow-500/50"
-                          : "bg-white/10 text-white/60 border border-white/20 hover:bg-white/20 hover:text-white/80"
-                      }`}
-                    >
-                      <svg
-                        className="w-4 h-4"
-                        fill={
-                          featuredProjects.includes(project.id)
-                            ? "currentColor"
-                            : "none"
-                        }
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                        />
-                      </svg>
-                    </button>
                   </div>
                 </div>
               </div>

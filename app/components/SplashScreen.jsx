@@ -1,11 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { useTheme } from "../context/ThemeContext";
 
 const SplashScreen = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [isAnimatingOut, setIsAnimatingOut] = useState(false);
-  const { isDark, isMounted } = useTheme();
 
   useEffect(() => {
     // Show splash screen for 3 seconds
@@ -51,8 +49,8 @@ const SplashScreen = () => {
               height: "120px",
               marginLeft: "-60px",
               marginTop: "-60px",
-              borderTopColor: isDark ? "#4f46e5" : "#4f46e5",
-              borderRightColor: isDark ? "#a855f7" : "#9333ea",
+              borderTopColor: "#4f46e5",
+              borderRightColor: "#a855f7",
             }}
           ></div>
 
@@ -66,8 +64,8 @@ const SplashScreen = () => {
               marginTop: "-50px",
               animationDirection: "reverse",
               animationDuration: "3s",
-              borderBottomColor: isDark ? "#4f46e5" : "#4f46e5",
-              borderLeftColor: isDark ? "#a855f7" : "#9333ea",
+              borderBottomColor: "#4f46e5",
+              borderLeftColor: "#a855f7",
             }}
           ></div>
 
@@ -75,12 +73,8 @@ const SplashScreen = () => {
           <div
             className="relative w-24 h-24 rounded-full flex items-center justify-center animate-bounce shadow-lg"
             style={{
-              background: isDark
-                ? "linear-gradient(to bottom right, #4f46e5, #a855f7)"
-                : "linear-gradient(to bottom right, #4f46e5, #9333ea)",
-              boxShadow: isDark
-                ? "0 20px 25px -5px rgba(79, 70, 229, 0.5)"
-                : "0 20px 25px -5px rgba(79, 70, 229, 0.4)",
+              background: "linear-gradient(to bottom right, #4f46e5, #a855f7)",
+              boxShadow: "0 20px 25px -5px rgba(79, 70, 229, 0.5)",
             }}
           >
             <span className="text-5xl font-bold text-white">A</span>
