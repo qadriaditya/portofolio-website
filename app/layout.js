@@ -3,6 +3,7 @@ import "./globals.css";
 import PageTransitionWrapper from "./components/PageTransitionWrapper";
 import SplashScreen from "./components/SplashScreen";
 import BackgroundMusic from "./components/BackgroundMusic";
+import { ThemeProvider } from "./context/ThemeContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -63,9 +64,11 @@ export default function RootLayout({ children }) {
       <body
         className={`min-h-screen transition-all duration-700 ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <SplashScreen />
-        <BackgroundMusic />
-        <PageTransitionWrapper>{children}</PageTransitionWrapper>
+        <ThemeProvider>
+          <SplashScreen />
+          <BackgroundMusic />
+          <PageTransitionWrapper>{children}</PageTransitionWrapper>
+        </ThemeProvider>
       </body>
     </html>
   );
