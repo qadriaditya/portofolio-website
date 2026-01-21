@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import useReveal from "../hooks/useReveal";
 
 const education = [
@@ -160,7 +159,10 @@ const AboutSection = ({ onClose }) => {
               >
                 Hello,{" "}
                 <span className="block">
-                  I’m <span className="text-gray-300">Adit</span>
+                  I'm{" "}
+                  <span className="bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent">
+                    Adit
+                  </span>
                 </span>
               </h1>
               <p
@@ -171,10 +173,23 @@ const AboutSection = ({ onClose }) => {
                 }`}
                 style={{ transitionDelay: "250ms" }}
               >
-                I am a self-taught Graphic Designer based in Viet Nam with
-                extensive marketing and communication experience. I am currently
-                living in France and pursuing a degree in Digital Web & Project
-                Management.
+                Front-end Developer & UI/UX Designer passionate about creating
+                pixel-perfect experiences that blend aesthetics with
+                functionality. I transform business goals into engaging digital
+                solutions that drive results. With a background in graphic
+                design and a strong focus on modern web technologies, I build
+                interfaces that users love.
+              </p>
+              <p
+                className={`mt-4 text-[14px] text-indigo-300 italic transition-all duration-600 ease-out ${
+                  revealed && isVisible
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-6"
+                }`}
+                style={{ transitionDelay: "280ms" }}
+              >
+                "Great design isn't just beautiful—it solves problems and
+                creates value."
               </p>
             </div>
 
@@ -291,8 +306,8 @@ const AboutSection = ({ onClose }) => {
           />
           <div className="relative z-10 text-white py-16 px-8">
             <div className="max-w-6xl mx-auto">
-              {/* ONLY show Technical skills, Languages, Hobbies & Interests */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {/* Technical skills, Languages, Tools & Favorites, Hobbies & Interests */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {/* Technical skills */}
                 <div>
                   <h3
@@ -389,6 +404,44 @@ const AboutSection = ({ onClose }) => {
                   </ul>
                 </div>
 
+                {/* Tools & Favorites */}
+                <div>
+                  <h3
+                    className={`text-white text-2xl font-bold mb-4 transition-all duration-500 ease-out ${
+                      bottomVisible
+                        ? "opacity-100 translate-y-0"
+                        : "opacity-0 -translate-y-3"
+                    }`}
+                    style={{ transitionDelay: "140ms" }}
+                  >
+                    Favorite Tools
+                  </h3>
+                  <div className="space-y-3">
+                    <div>
+                      <p className="text-xs font-semibold text-indigo-300 mb-1">
+                        Design
+                      </p>
+                      <p className="text-sm text-gray-300">Figma, Adobe XD</p>
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold text-indigo-300 mb-1">
+                        Development
+                      </p>
+                      <p className="text-sm text-gray-300">
+                        VS Code, Git, Chrome DevTools
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold text-indigo-300 mb-1">
+                        Productivity
+                      </p>
+                      <p className="text-sm text-gray-300">
+                        Notion, Figma, Linear
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
                 {/* Hobbies & Interests */}
                 <div>
                   <h3
@@ -397,7 +450,7 @@ const AboutSection = ({ onClose }) => {
                         ? "opacity-100 translate-y-0"
                         : "opacity-0 -translate-y-3"
                     }`}
-                    style={{ transitionDelay: "160ms" }}
+                    style={{ transitionDelay: "180ms" }}
                   >
                     Hobbies & Interests
                   </h3>
@@ -407,7 +460,7 @@ const AboutSection = ({ onClose }) => {
                         ? "opacity-100 translate-y-0"
                         : "opacity-0 -translate-y-2"
                     }`}
-                    style={{ transitionDelay: "200ms" }}
+                    style={{ transitionDelay: "220ms" }}
                   >
                     Photography, travel, illustration, and cooking.
                   </p>

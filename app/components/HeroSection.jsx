@@ -18,7 +18,7 @@ const HeroSection = () => {
   const services = [
     { title: "Web Development", icon: "web", desc: "Modern & Responsive" },
     { title: "UI/UX Design", icon: "design", desc: "Beautiful Interfaces" },
-    { title: "Brand Design", icon: "brand", desc: "Creative Identity" },
+    { title: "Graphic Design", icon: "brand", desc: "Creative" },
   ];
 
   useEffect(() => {
@@ -82,7 +82,7 @@ const HeroSection = () => {
                 <span className="bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent">
                   <TypeAnimation
                     sequence={[
-                      "Adit",
+                      "Aditya",
                       2000,
                       "a Developer",
                       2000,
@@ -99,11 +99,16 @@ const HeroSection = () => {
               </h1>
             </div>
 
+            {/* Sub-Headline - Value Proposition */}
+            <p className="text-indigo-300 dark:text-indigo-300 text-sm sm:text-base uppercase tracking-widest mb-4 font-semibold">
+              Helping brands build pixel-perfect experiences that convert
+            </p>
+
             {/* Description */}
-            <p className="text-white/70 dark:text-white/70 text-lg sm:text-xl leading-relaxed mb-8 max-w-2xl mx-auto">
+            <p className="text-white/70 dark:text-white/70 text-lg sm:text-xl leading-relaxed mb-10 max-w-2xl mx-auto">
               Passionate frontend developer and UI/UX designer creating
-              beautiful, functional digital experiences. Let's build something
-              amazing together.
+              beautiful, functional digital experiences that drive results.
+              Let's build something amazing together.
             </p>
 
             {/* CTA Buttons */}
@@ -127,7 +132,7 @@ const HeroSection = () => {
             <div className="flex flex-col sm:flex-row flex-wrap gap-8 sm:gap-12 mt-12 sm:mt-16 justify-center">
               <div>
                 <div className="text-3xl sm:text-4xl font-bold text-white dark:text-white mb-2">
-                  2
+                  2+
                 </div>
                 <p className="text-white/60 dark:text-white/60 text-sm">
                   Projects Completed

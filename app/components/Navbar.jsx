@@ -2,6 +2,7 @@
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import NavLink from "./NavLink";
+import Logo from "./atoms/Logo";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import { useTheme } from "../context/ThemeContext";
 
@@ -85,9 +86,12 @@ const Navbar = () => {
           {/* Center Logo with Animation */}
           <Link
             href={"/"}
-            className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full text-white font-bold text-sm sm:text-lg hover:shadow-lg hover:shadow-indigo-500/50 transition-all duration-300 hover:scale-110 active:scale-95"
+            className="flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-300 group"
           >
-            <span>A</span>
+            <Logo
+              size="md"
+              className="shadow-lg shadow-indigo-500/50 group-hover:shadow-indigo-500/70 transition-all duration-300"
+            />
           </Link>
 
           {/* Right Menu */}

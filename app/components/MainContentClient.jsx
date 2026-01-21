@@ -1,9 +1,7 @@
 "use client";
-import React from "react";
 import HeroSection from "./HeroSection";
 import ProjectSection from "./ProjectSection";
 import ServicesSection from "./ServicesSection";
-import DeveloperSection from "./DeveloperSection";
 import TestimonialsSection from "./TestimonialsSection";
 import ContactSection from "./ContactSection";
 import CTASection from "./CTASection";
@@ -16,7 +14,6 @@ export default function MainContentClient() {
         <HeroSection />
         <ProjectSection />
         <ServicesSection />
-        <DeveloperSection />
         <TestimonialsSection />
         <CTASection />
         <ContactSection />
