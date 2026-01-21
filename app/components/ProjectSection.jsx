@@ -67,8 +67,12 @@ const ProjectCard = ({ project, visible, index, isFeatured }) => {
         }}
       >
         <div
-          className="relative overflow-hidden rounded-2xl border border-white/10 shadow-2xl hover:shadow-2xl hover:shadow-indigo-500/30 transition-all duration-300 h-full group/card bg-black"
-          style={{ height: "clamp(220px, 50vw, 600px)" }}
+          className="relative overflow-hidden rounded-2xl shadow-2xl hover:shadow-2xl hover:shadow-indigo-500/30 transition-all duration-300 h-full group/card"
+          style={{
+            height: "clamp(220px, 50vw, 600px)",
+            backgroundColor: "#000000",
+            border: "1px solid rgba(255, 255, 255, 0.1)",
+          }}
         >
           {/* Image Container - Full Height */}
           <div className="relative w-full h-full overflow-hidden">
@@ -167,8 +171,12 @@ const ProjectCard = ({ project, visible, index, isFeatured }) => {
       }}
     >
       <div
-        className="relative overflow-hidden rounded-2xl border border-white/10 shadow-2xl hover:shadow-2xl hover:shadow-indigo-500/30 transition-all duration-300 h-full group/card bg-slate-900 flex flex-col"
-        style={{ height: "clamp(220px, 50vw, 600px)" }}
+        className="relative overflow-hidden rounded-2xl shadow-2xl hover:shadow-2xl hover:shadow-indigo-500/30 transition-all duration-300 h-full group/card flex flex-col"
+        style={{
+          height: "clamp(100px, 40vw, 600px)",
+          backgroundColor: "#000000",
+          border: "1px solid rgba(255, 255, 255, 0.1)",
+        }}
       >
         {/* Image Container */}
         <div
@@ -184,7 +192,7 @@ const ProjectCard = ({ project, visible, index, isFeatured }) => {
         </div>
 
         {/* Content */}
-        <div className="p-4 flex-1 flex flex-col justify-between">
+        <div className="hidden md:flex p-4 flex-1 flex flex-col justify-between">
           <div>
             <div className="hidden md:flex items-start gap-2 mb-2">
               <span className="text-indigo-400 text-xs font-bold uppercase tracking-widest">
@@ -197,7 +205,7 @@ const ProjectCard = ({ project, visible, index, isFeatured }) => {
               </span>
             </div>
 
-            <h3 className="text-center md:text-left text-base md:text-lg font-bold text-white mb-0 md:mb-2 group-hover/card:text-indigo-300 transition-colors">
+            <h3 className="hidden md:block text-center md:text-left text-base md:text-lg font-bold text-white mb-0 md:mb-2 group-hover/card:text-indigo-300 transition-colors">
               {project.title}
             </h3>
 
@@ -259,7 +267,7 @@ const ProjectCard = ({ project, visible, index, isFeatured }) => {
         className="md:hidden mt-3 w-full px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold rounded-lg transition-colors duration-300 flex items-center justify-center gap-2"
       >
         <EyeIcon className="w-4 h-4" />
-        <span>View Project</span>
+        <span>View</span>
       </a>
     </div>
   );
