@@ -42,7 +42,7 @@ const services = [
     title: "UI/UX Design",
     description:
       "Creating beautiful and intuitive user interfaces that provide excellent user experience and drive engagement.",
-    features: ["User Research", "Wireframing", "Visual Design"],
+    features: ["Visual Design"],
   },
   {
     icon: (
@@ -63,7 +63,7 @@ const services = [
     title: "Brand Design",
     description:
       "Developing comprehensive brand identities including logos, color schemes, and design systems.",
-    features: ["Logo Design", "Brand Guidelines", "Visual Identity"],
+    features: ["Poster Design", "Flyer", "Social Media Graphics"],
   },
 ];
 

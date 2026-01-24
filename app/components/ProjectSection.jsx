@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import { CodeBracketIcon, EyeIcon } from "@heroicons/react/24/outline";
+import useReveal from "../hooks/useReveal";
 
 // All available projects (same as in ProjectsDetailPage)
 const ALL_PROJECTS = [
@@ -54,13 +55,16 @@ const ALL_PROJECTS = [
   },
 ];
 
-const ProjectCard = ({ project, visible, index, isFeatured }) => {
+const ProjectCard = ({ project, index, isFeatured }) => {
+  const { ref, revealed } = useReveal({ threshold: 0.1 });
+
   if (isFeatured) {
     // Featured card with image-only and hover overlay
     return (
       <div
+        ref={ref}
         className={`group transition-all duration-500 ${
-          visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          revealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         } sm:col-span-2 row-span-2`}
         style={{
           transitionDelay: `${index * 100}ms`,
@@ -69,7 +73,7 @@ const ProjectCard = ({ project, visible, index, isFeatured }) => {
         <div
           className="relative overflow-hidden rounded-2xl shadow-2xl hover:shadow-2xl hover:shadow-indigo-500/30 transition-all duration-300 h-full group/card"
           style={{
-            height: "clamp(220px, 50vw, 600px)",
+            height: "clamp(100px, 50vw, 1000px)",
             backgroundColor: "#000000",
             border: "1px solid rgba(255, 255, 255, 0.1)",
           }}
@@ -84,7 +88,7 @@ const ProjectCard = ({ project, visible, index, isFeatured }) => {
 
             {/* Featured Badge - Always Visible */}
             <div className="absolute top-4 left-4 px-3 py-1 bg-indigo-600 text-white text-xs font-semibold rounded-full backdrop-blur-md opacity-100 group-hover/card:opacity-0 transition-opacity duration-300 z-10">
-              ⭐ Featured
+              ⭐ Mark
             </div>
 
             {/* Overlay on Hover */}
@@ -96,8 +100,8 @@ const ProjectCard = ({ project, visible, index, isFeatured }) => {
                       (project.id === 1 || project.id === 2
                         ? "Web Development"
                         : project.id === 3
-                        ? "Web Design"
-                        : "Graphic Design")}
+                          ? "Web Design"
+                          : "Graphic Design")}
                   </span>
                 </div>
 
@@ -163,8 +167,9 @@ const ProjectCard = ({ project, visible, index, isFeatured }) => {
   // Regular card with content always visible
   return (
     <div
+      ref={ref}
       className={`group transition-all duration-500 ${
-        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        revealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       } flex flex-col`}
       style={{
         transitionDelay: `${index * 100}ms`,
@@ -173,15 +178,15 @@ const ProjectCard = ({ project, visible, index, isFeatured }) => {
       <div
         className="relative overflow-hidden rounded-2xl shadow-2xl hover:shadow-2xl hover:shadow-indigo-500/30 transition-all duration-300 h-full group/card flex flex-col"
         style={{
-          height: "clamp(100px, 40vw, 600px)",
+          height: "clamp(250px, 50vw, 600px)",
           backgroundColor: "#000000",
           border: "1px solid rgba(255, 255, 255, 0.1)",
         }}
       >
         {/* Image Container */}
         <div
-          className="relative overflow-hidden flex-shrink-0"
-          style={{ height: "clamp(130px, 30vw, 350px)" }}
+          className="relative overflow-hidden flex-1 md:flex-shrink-0"
+          style={{ height: "clamp(200px, 50vw, 250px)", minHeight: "auto" }}
         >
           <img
             src={project.image}
@@ -200,8 +205,8 @@ const ProjectCard = ({ project, visible, index, isFeatured }) => {
                   (project.id === 1 || project.id === 2
                     ? "Web Development"
                     : project.id === 3
-                    ? "Web Design"
-                    : "Graphic Design")}
+                      ? "Web Design"
+                      : "Graphic Design")}
               </span>
             </div>
 
@@ -261,23 +266,17 @@ const ProjectCard = ({ project, visible, index, isFeatured }) => {
         </div>
       </div>
 
-      {/* Mobile View Button - Outside Card */}
-      <a
-        href={project.liveLink}
-        className="md:hidden mt-3 w-full px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold rounded-lg transition-colors duration-300 flex items-center justify-center gap-2"
-      >
-        <EyeIcon className="w-4 h-4" />
-        <span>View</span>
-      </a>
+      {/* Mobile View Button removed - only featured button shows on mobile */}
     </div>
   );
 };
 
 const ProjectSection = () => {
-  const sectionRef = useRef(null);
-  const [visible, setVisible] = useState(false);
-  const [featuredProjects, setFeaturedProjects] = useState([1, 2]);
+  const [featuredProjects, setFeaturedProjects] = useState([1, 2, 3]);
   const [isLoaded, setIsLoaded] = useState(false);
+  const { ref: headerRef, revealed: headerRevealed } = useReveal({
+    threshold: 0.1,
+  });
 
   // Load featured projects from localStorage on mount
   useEffect(() => {
@@ -287,7 +286,7 @@ const ProjectSection = () => {
         try {
           setFeaturedProjects(JSON.parse(saved));
         } catch {
-          setFeaturedProjects([1, 2]); // Default fallback
+          setFeaturedProjects([1, 2, 3]); // Default fallback
         }
       }
       setIsLoaded(true);
@@ -302,7 +301,7 @@ const ProjectSection = () => {
         try {
           setFeaturedProjects(JSON.parse(saved));
         } catch {
-          setFeaturedProjects([1, 2]);
+          setFeaturedProjects([1, 2, 3]);
         }
       }
     };
@@ -311,47 +310,34 @@ const ProjectSection = () => {
     return () => window.removeEventListener("storage", handleStorageChange);
   }, []);
 
-  useEffect(() => {
-    const el = sectionRef.current;
-    if (!el) return;
-
-    const obs = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => setVisible(entry.isIntersecting));
-      },
-      { threshold: 0.1 }
-    );
-
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
-
-  // Filter projects yang di-mark sebagai featured
+  // Filter projects yang di-mark sebagai featured - hanya ambil 3 project
   const displayProjects = ALL_PROJECTS.filter((p) =>
-    featuredProjects.includes(p.id)
-  );
+    featuredProjects.includes(p.id),
+  ).slice(0, 3);
 
   return (
     <section
       suppressHydrationWarning
       id="projects"
       className="py-20 sm:py-28 md:py-40 bg-black"
-      ref={sectionRef}
     >
       <div className="max-w-7xl mx-auto px-3 sm:px-6">
         {/* Section Header */}
         <div
+          ref={headerRef}
           className={`mb-12 sm:mb-16 md:mb-20 transition-all duration-700 ${
-            visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            headerRevealed
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-8"
           }`}
         >
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-white mb-3 sm:mb-4">
-            Featured Projects
+            Projects
           </h2>
           <div className="flex items-center gap-3 sm:gap-4">
             <div className="h-0.5 w-8 sm:w-12 bg-gradient-to-r from-indigo-500 to-transparent"></div>
             <p className="text-indigo-400 text-xs sm:text-sm font-semibold tracking-widest uppercase">
-              Case Studies
+              Case
             </p>
           </div>
           <p className="text-white/60 text-sm sm:text-base mt-4 max-w-2xl">
@@ -360,44 +346,17 @@ const ProjectSection = () => {
           </p>
         </div>
 
-        {/* Projects Grid - Featured Layout */}
-        <div
-          className="grid grid-cols-2 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-10"
-          style={{
-            gridTemplateColumns: "repeat(2, 1fr)",
-            gridTemplateRows: "auto auto",
-          }}
-        >
-          {displayProjects.map((project, index) => {
-            let gridClass = "";
-            if (index === 0) {
-              // Featured project spans full width
-              gridClass = "col-span-2";
-            } else if (index === 1 || index === 2) {
-              // Projects 2 and 3 each take 1 column
-              gridClass = "col-span-1";
-            }
-
-            return (
-              <div key={project.id} className={gridClass}>
-                <ProjectCard
-                  project={project}
-                  visible={visible}
-                  index={index}
-                  isFeatured={index === 0}
-                />
-              </div>
-            );
-          })}
+        {/* Projects Grid - 3 Cards Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 lg:gap-10">
+          {displayProjects.map((project, index) => (
+            <div key={project.id}>
+              <ProjectCard project={project} index={index} isFeatured={false} />
+            </div>
+          ))}
         </div>
 
         {/* CTA Section */}
-        <div
-          className={`mt-12 sm:mt-16 md:mt-20 text-center transition-all duration-700 ${
-            visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-          style={{ transitionDelay: "300ms" }}
-        >
+        <div className="mt-12 sm:mt-16 md:mt-20 text-center transition-all duration-700 opacity-100 translate-y-0">
           <p className="text-white/70 text-sm sm:text-base mb-4">
             Want to see all my work?
           </p>

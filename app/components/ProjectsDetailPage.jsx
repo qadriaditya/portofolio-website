@@ -77,6 +77,7 @@ const ProjectsDetailPage = () => {
   const [activeCategory, setActiveCategory] = useState("All");
   const [activeSubcategory, setActiveSubcategory] =
     useState("All Graphic Design");
+  const [featuredProjects, setFeaturedProjects] = useState([1, 2, 3]);
 
   const { ref: headerRef, revealed: headerRevealed } = useReveal({
     threshold: 0.1,
@@ -85,18 +86,49 @@ const ProjectsDetailPage = () => {
     threshold: 0.05,
   });
 
+  // Load featured projects from localStorage on mount
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("featuredProjects");
+      if (saved) {
+        try {
+          setFeaturedProjects(JSON.parse(saved));
+        } catch {
+          setFeaturedProjects([1, 2, 3]);
+        }
+      }
+    }
+  }, []);
+
+  // Handle toggle featured project
+  const toggleFeatured = (projectId) => {
+    setFeaturedProjects((prev) => {
+      let updated;
+      if (prev.includes(projectId)) {
+        updated = prev.filter((id) => id !== projectId);
+      } else {
+        updated = [...prev, projectId];
+      }
+      // Save to localStorage
+      if (typeof window !== "undefined") {
+        localStorage.setItem("featuredProjects", JSON.stringify(updated));
+      }
+      return updated;
+    });
+  };
+
   const filteredProjects =
     activeCategory === "All"
       ? projects
       : activeCategory === "Graphic Design"
-      ? activeSubcategory === "All Graphic Design"
-        ? projects.filter((p) => p.category === activeCategory)
-        : projects.filter(
-            (p) =>
-              p.category === activeCategory &&
-              p.subcategory === activeSubcategory
-          )
-      : projects.filter((p) => p.category === activeCategory);
+        ? activeSubcategory === "All Graphic Design"
+          ? projects.filter((p) => p.category === activeCategory)
+          : projects.filter(
+              (p) =>
+                p.category === activeCategory &&
+                p.subcategory === activeSubcategory,
+            )
+        : projects.filter((p) => p.category === activeCategory);
 
   return (
     <div
@@ -221,11 +253,11 @@ const ProjectsDetailPage = () => {
                     ))}
                   </div>
 
-                  {/* View Project */}
+                  {/* View Project & Featured Toggle */}
                   <div className="flex items-center justify-between">
                     <a
                       href={project.link}
-                      className="inline-flex items-center gap-2 text-indigo-400 hover:text-indigo-300 transition-colors text-xs sm:text-sm font-semibold group/btn"
+                      className="hidden sm:inline-flex items-center gap-2 text-indigo-400 hover:text-indigo-300 transition-colors text-xs sm:text-sm font-semibold group/btn"
                     >
                       View Project
                       <svg
@@ -242,6 +274,24 @@ const ProjectsDetailPage = () => {
                         />
                       </svg>
                     </a>
+                    <button
+                      onClick={() => toggleFeatured(project.id)}
+                      className={`px-3 py-1 rounded-full text-xs font-semibold transition-all duration-300 flex items-center gap-1 ${
+                        featuredProjects.includes(project.id)
+                          ? "bg-indigo-600 text-white hover:bg-indigo-700"
+                          : "bg-white/10 text-white/70 hover:bg-white/20"
+                      }`}
+                      title={
+                        featuredProjects.includes(project.id)
+                          ? "Remove from featured"
+                          : "Add to featured"
+                      }
+                    >
+                      <span>
+                        {featuredProjects.includes(project.id) ? "⭐" : "☆"}
+                      </span>
+                      Mark
+                    </button>
                   </div>
                 </div>
               </div>
