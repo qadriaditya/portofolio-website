@@ -26,54 +26,26 @@ const AboutDetailPage = () => {
     },
     {
       category: "Design",
-      items: ["Figma", "Adobe XD", "Photoshop", "Illustrator", "UI/UX Design"],
+      items: ["Figma", "Photoshop", "Illustrator", "UI/UX Design"],
     },
     {
       category: "Backend",
-      items: ["Node.js", "PHP", "MySQL", "MongoDB", "REST API"],
+      items: ["MySQL"],
     },
     {
       category: "Tools",
-      items: ["Git", "VS Code", "npm", "Webpack", "Responsive Design"],
+      items: ["Git", "VS Code", "Webpack"],
     },
   ];
 
   const experiences = [
     {
-      year: "2023 - Present",
+      year: "2025 - Present",
       title: "Frontend Developer",
       company: "Freelance",
       description:
         "Building modern web applications with React and Next.js. Creating responsive and user-friendly interfaces.",
-      achievements: [
-        "Delivered 15+ projects",
-        "100% client satisfaction",
-        "Increased user engagement by 40%",
-      ],
-    },
-    {
-      year: "2022 - 2023",
-      title: "UI/UX Designer",
-      company: "Digital Agency",
-      description:
-        "Designed user interfaces and experiences for web and mobile applications.",
-      achievements: [
-        "Led 10+ design projects",
-        "Improved user retention by 35%",
-        "Created design system",
-      ],
-    },
-    {
-      year: "2021 - 2022",
-      title: "Graphic Designer",
-      company: "Creative Studio",
-      description:
-        "Created visual designs, branding materials, and marketing content.",
-      achievements: [
-        "Designed 50+ marketing materials",
-        "Rebranded 5 companies",
-        "Award winner design",
-      ],
+      achievements: ["Delivered 2+ projects"],
     },
   ];
 
@@ -90,12 +62,6 @@ const AboutDetailPage = () => {
       degree: "Commercialisation Technique",
       institution: "IUT de Béziers",
       description: "Business and technical commerce studies.",
-    },
-    {
-      year: "2017 - 2020",
-      degree: "International Business",
-      institution: "Economic University, Danang",
-      description: "International business and economics.",
     },
   ];
 
@@ -139,21 +105,21 @@ const AboutDetailPage = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mt-12 sm:mt-16">
           <div className="text-center p-6 bg-gradient-to-br from-white/10 to-white/5 rounded-xl border border-white/10">
             <div className="text-3xl sm:text-4xl font-bold text-white mb-2">
-              3+
+              5+
             </div>
-            <div className="text-white/60 text-sm">Years Experience</div>
+            <div className="text-white/60 text-sm">Month Experience</div>
           </div>
           <div className="text-center p-6 bg-gradient-to-br from-white/10 to-white/5 rounded-xl border border-white/10">
             <div className="text-3xl sm:text-4xl font-bold text-white mb-2">
-              15+
+              1+
             </div>
             <div className="text-white/60 text-sm">Projects Done</div>
           </div>
           <div className="text-center p-6 bg-gradient-to-br from-white/10 to-white/5 rounded-xl border border-white/10">
             <div className="text-3xl sm:text-4xl font-bold text-white mb-2">
-              10+
+              100%
             </div>
-            <div className="text-white/60 text-sm">Happy Clients</div>
+            <div className="text-white/60 text-sm">Tools</div>
           </div>
           <div className="text-center p-6 bg-gradient-to-br from-white/10 to-white/5 rounded-xl border border-white/10">
             <div className="text-3xl sm:text-4xl font-bold text-white mb-2">
