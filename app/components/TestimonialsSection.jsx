@@ -45,8 +45,8 @@ const TestimonialsSection = () => {
             Client Testimonials
           </h2>
           <div className="flex items-center gap-3 sm:gap-4">
-            <div className="h-0.5 w-8 sm:w-12 bg-gradient-to-r from-green-500 to-transparent"></div>
-            <p className="text-green-500 text-xs sm:text-sm font-semibold tracking-widest uppercase">
+            <div className="h-0.5 w-8 sm:w-12 bg-gradient-to-r from-blue-500 to-transparent"></div>
+            <p className="text-blue-500 text-xs sm:text-sm font-semibold tracking-widest uppercase">
               What Clients Say
             </p>
           </div>
@@ -94,6 +94,7 @@ const TestimonialsSection = () => {
                     className="w-full h-full object-cover"
                   />
                 </div>
+
                 <div>
                   <p className="text-white font-semibold text-sm sm:text-base">
                     {testimonial.name}

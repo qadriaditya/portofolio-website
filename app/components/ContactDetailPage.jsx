@@ -31,9 +31,9 @@ const ContactDetailPage = () => {
 
     // Create mailto link with form data
     const mailtoLink = `mailto:qadriaditya6@gmail.com?subject=${encodeURIComponent(
-      formData.subject
+      formData.subject,
     )}&body=${encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`,
     )}`;
 
     window.location.href = mailtoLink;
@@ -193,7 +193,7 @@ const ContactDetailPage = () => {
                   style={{ transitionDelay: `${index * 100}ms` }}
                 >
                   <div className="flex items-start gap-4">
-                    <div className="p-3 bg-green-500/10 rounded-lg text-green-400">
+                    <div className="p-3 bg-green-500/10 rounded-lg text-blue-400">
                       {method.icon}
                     </div>
                     <div className="flex-1">
@@ -230,10 +230,10 @@ const ContactDetailPage = () => {
             </div>
 
             {/* Availability */}
-            <div className="p-6 bg-gradient-to-br from-green-500/10 to-transparent rounded-xl border border-green-500/20">
+            <div className="p-6 bg-gradient-to-br from-blue-500/10 to-transparent rounded-xl border border-blue-500/20">
               <div className="flex items-center gap-2 mb-2">
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                <span className="text-green-400 font-semibold">
+                <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+                <span className="text-blue-400 font-semibold">
                   Available for work
                 </span>
               </div>

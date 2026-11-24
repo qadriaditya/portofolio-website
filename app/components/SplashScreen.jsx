@@ -102,7 +102,7 @@ const SplashScreen = () => {
           className="w-48 h-1 rounded-full overflow-hidden"
           style={{ backgroundColor: "var(--foreground)", opacity: 0.2 }}
         >
-          <div className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full animate-progress"></div>
+          <div className="h-full bg-gradient-to-r from-indigo-500 to-white rounded-full animate-progress"></div>
         </div>
 
         {/* Loading Text */}

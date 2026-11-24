@@ -16,7 +16,7 @@ const CTASection = () => {
           }`}
         >
           {/* Gradient Background */}
-          <div className="absolute inset-0 bg-gradient-to-r from-green-500/10 to-blue-500/10 rounded-2xl"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-blue-700/10 rounded-2xl"></div>
 
           {/* Content */}
           <div className="relative z-10 text-center">

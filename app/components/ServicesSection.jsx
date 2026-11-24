@@ -84,8 +84,8 @@ const ServicesSection = () => {
             Services I Offer
           </h2>
           <div className="flex items-center gap-3 sm:gap-4">
-            <div className="h-0.5 w-8 sm:w-12 bg-gradient-to-r from-green-500 to-transparent"></div>
-            <p className="text-green-500 text-xs sm:text-sm font-semibold tracking-widest uppercase">
+            <div className="h-0.5 w-8 sm:w-12 bg-gradient-to-r from-blue-500 to-transparent"></div>
+            <p className="text-blue-500 text-xs sm:text-sm font-semibold tracking-widest uppercase">
               What I Can Do
             </p>
           </div>
@@ -100,7 +100,7 @@ const ServicesSection = () => {
           {services.map((service, index) => (
             <div
               key={index}
-              className={`p-6 sm:p-8 bg-gradient-to-br from-white/5 to-transparent rounded-xl border border-white/10 hover:border-green-500/50 group transition-all duration-700 hover:shadow-lg hover:shadow-green-500/10 ${
+              className={`p-6 sm:p-8 bg-gradient-to-br from-white/5 to-transparent rounded-xl border border-white/10 hover:border-blue-500/50 group transition-all duration-700 hover:shadow-lg hover:shadow-blue-500/10 ${
                 revealed
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-8"
@@ -110,12 +110,12 @@ const ServicesSection = () => {
               }}
             >
               {/* Icon */}
-              <div className="p-3 bg-green-500/10 rounded-lg text-green-400 mb-4 group-hover:bg-green-500/20 transition-colors w-fit">
+              <div className="p-3 bg-blue-500/10 rounded-lg text-blue-400 mb-4 group-hover:bg-blue-500/20 transition-colors w-fit">
                 {service.icon}
               </div>
 
               {/* Title & Description */}
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 group-hover:text-green-400 transition-colors">
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">
                 {service.title}
               </h3>
               <p className="text-white/70 text-sm sm:text-base mb-6">
@@ -129,7 +129,7 @@ const ServicesSection = () => {
                     key={idx}
                     className="flex items-center gap-2 text-white/60 text-sm"
                   >
-                    <span className="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
+                    <span className="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
                     {feature}
                   </li>
                 ))}

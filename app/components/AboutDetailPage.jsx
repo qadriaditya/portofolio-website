@@ -77,7 +77,7 @@ const AboutDetailPage = () => {
         {/* Profile Photo */}
         <div className="flex justify-center mb-8 sm:mb-12">
           <div className="relative group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-green-500 to-blue-500 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+            <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
             <div className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-black">
               <img
                 src="/images/hero-image.png"
@@ -143,7 +143,7 @@ const AboutDetailPage = () => {
           <h2 className="text-3xl sm:text-5xl font-bold text-white mb-4">
             Skills & Expertise
           </h2>
-          <div className="h-1 w-20 bg-gradient-to-r from-green-500 to-transparent"></div>
+          <div className="h-1 w-20 bg-gradient-to-r from-blue-500 to-transparent"></div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
@@ -188,7 +188,7 @@ const AboutDetailPage = () => {
           <h2 className="text-3xl sm:text-5xl font-bold text-white mb-4">
             Work Experience
           </h2>
-          <div className="h-1 w-20 bg-gradient-to-r from-green-500 to-transparent"></div>
+          <div className="h-1 w-20 bg-gradient-to-r from-blue-500 to-transparent"></div>
         </div>
 
         <div className="space-y-6 sm:space-y-8">
@@ -224,7 +224,7 @@ const AboutDetailPage = () => {
                     key={idx}
                     className="flex items-start gap-2 text-white/60 text-sm sm:text-base"
                   >
-                    <span className="text-green-400 mt-1">•</span>
+                    <span className="text-blue-400 mt-1">•</span>
                     {achievement}
                   </li>
                 ))}
@@ -240,7 +240,7 @@ const AboutDetailPage = () => {
           <h2 className="text-3xl sm:text-5xl font-bold text-white mb-4">
             Education
           </h2>
-          <div className="h-1 w-20 bg-gradient-to-r from-green-500 to-transparent"></div>
+          <div className="h-1 w-20 bg-gradient-to-r from-blue-500 to-transparent"></div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
@@ -249,7 +249,7 @@ const AboutDetailPage = () => {
               key={index}
               className="p-6 sm:p-8 bg-white/5 rounded-xl border border-white/10 hover:border-white/30 transition-all duration-300"
             >
-              <div className="text-green-400 text-sm sm:text-base font-semibold mb-3">
+              <div className="text-blue-400 text-sm sm:text-base font-semibold mb-3">
                 {edu.year}
               </div>
               <h3 className="text-lg sm:text-xl font-bold text-white mb-2">

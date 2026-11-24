@@ -11,9 +11,9 @@ const Logo = ({ size = "md", className = "" }) => {
 
   return (
     <div
-      className={`${sizes[size]} ${className} bg-gradient-to-br from-indigo-600 to-purple-600 rounded-lg flex items-center justify-center font-bold text-white shadow-lg`}
+      className={`${sizes[size]} ${className} bg-gradient-to-br from-indigo-600 to-blue-600 rounded-lg flex items-center justify-center font-bold text-white shadow-lg`}
     >
-      <span className="text-xs sm:text-sm lg:text-base">QA</span>
+      <span className="text-xs sm:text-sm lg:text-base">𝓠</span>
     </div>
   );
 };

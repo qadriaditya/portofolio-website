@@ -14,7 +14,7 @@ const ContactSection = () => {
     // simple mailto fallback to open user's mail client
     const subject = encodeURIComponent("Project Inquiry");
     const body = encodeURIComponent(
-      `Hi! I'd like to discuss a project.\n\nBest regards`
+      `Hi! I'd like to discuss a project.\n\nBest regards`,
     );
     window.location.href = `mailto:qadriaditya6@gmail.com?subject=${subject}&body=${body}`;
   };
@@ -134,7 +134,7 @@ const ContactSection = () => {
               />
               <button
                 type="submit"
-                className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-indigo-500/50 transition-all duration-300 hover:scale-105 active:scale-95 flex items-center justify-center gap-2 whitespace-nowrap text-sm sm:text-base"
+                className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-indigo-600 to-blue-600 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-indigo-500/50 transition-all duration-300 hover:scale-105 active:scale-95 flex items-center justify-center gap-2 whitespace-nowrap text-sm sm:text-base"
               >
                 Get Started
                 <svg

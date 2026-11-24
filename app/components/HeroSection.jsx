@@ -72,21 +72,21 @@ const HeroSection = () => {
             <p className="text-white/60 text-sm sm:text-base uppercase tracking-widest mb-6 flex items-center justify-center gap-2">
               <span className="w-12 h-px bg-gradient-to-r from-transparent via-indigo-500 to-transparent"></span>
               Welcome to my portfolio
-              <span className="w-12 h-px bg-gradient-to-l from-transparent via-purple-500 to-transparent"></span>
+              <span className="w-12 h-px bg-gradient-to-l from-transparent via-blue-500 to-transparent"></span>
             </p>
 
             {/* Main Title */}
             <div className="mb-6 sm:mb-8">
               <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight mb-4">
-                I'm{" "}
-                <span className="bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent">
+                {" "}
+                <span className="bg-gradient-to-r from-indigo-400 to-blue-500 bg-clip-text text-transparent">
                   <TypeAnimation
                     sequence={[
-                      "Aditya",
+                      "Frontend Developer",
                       2000,
-                      "a Developer",
+                      "UI/UX designer",
                       2000,
-                      "a Designer",
+                      "Graphic Designer",
                       2000,
                       "Creative",
                       2000,
@@ -146,7 +146,7 @@ const HeroSection = () => {
               <a
                 href="/CVQadriAditya.pdf"
                 download
-                className="inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-indigo-500/50 transition-all duration-300 hover:scale-105 active:scale-95"
+                className="inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-indigo-600 to-blue-600 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-indigo-500/50 transition-all duration-300 hover:scale-105 active:scale-95"
               >
                 <svg
                   className="w-5 h-5"
@@ -178,7 +178,7 @@ const HeroSection = () => {
         >
           <div className="mb-12">
             <p className="text-white/60 text-sm uppercase tracking-widest mb-4 flex items-center gap-2">
-              <span className="w-12 h-px bg-gradient-to-r from-green-500 to-transparent"></span>
+              <span className="w-12 h-px bg-gradient-to-r from-blue-500 to-transparent"></span>
               What I Offer
             </p>
             <h2 className="text-3xl sm:text-4xl font-bold text-white">
@@ -200,7 +200,7 @@ const HeroSection = () => {
                   }`}
                 >
                   <div className="mb-6">
-                    <div className="w-14 h-14 rounded-lg bg-gradient-to-br from-green-500 to-blue-500 flex items-center justify-center mb-4">
+                    <div className="w-14 h-14 rounded-lg bg-gradient-to-br from-blue-500 to-blue-500 flex items-center justify-center mb-4">
                       {service.icon === "web" && (
                         <svg
                           className="w-7 h-7 text-white"
@@ -253,7 +253,7 @@ const HeroSection = () => {
                   </h3>
                   <p className="text-white/70 text-sm mb-4">{service.desc}</p>
                   {idx === active && (
-                    <div className="h-1 w-12 bg-gradient-to-r from-green-500 to-blue-500 rounded-full"></div>
+                    <div className="h-1 w-12 bg-gradient-to-r from-blue-500 to-blue-500 rounded-full"></div>
                   )}
                 </div>
               ))}
